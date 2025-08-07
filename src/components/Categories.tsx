@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import oversized from '@/assets/oversizedfront.png'
+import oversized from '@/assets/oversizedfront.png';
 import sweatshirt from '@/assets/sweatshirtfront.png';
 import comingsoon from '@/assets/comingsoon.png';
 import dropfront from '@/assets/drop.png';
@@ -17,7 +17,7 @@ const categories = [
     description: 'Comfort meets style.',
     image: sweatshirt
   },
-    {
+  {
     id: 'Dropshoulder',
     name: 'Drop-Shoulder',
     description: 'Comfort meets style.',
@@ -35,7 +35,7 @@ const categories = [
     description: 'Urban essential.',
     image: comingsoon
   },
-    {
+  {
     id: 'acid-wash',
     name: 'Acid-Wash-Tees',
     description: 'Urban essential.',
@@ -62,11 +62,12 @@ const Categories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Updated grid: 2 columns by default for mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {categories.map((category, index) => (
             <div
               key={category.id}
-              className="product-card group"
+              className="product-card group cursor-pointer"
               onClick={() => handleCategoryClick(category.id)}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -74,18 +75,18 @@ const Categories = () => {
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="product-image"
+                  className="product-image object-cover w-full h-full"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-medium tracking-wide text-foreground mb-2">
+              <div className="p-4 md:p-6">
+                <h3 className="text-sm md:text-xl font-medium tracking-wide text-foreground mb-1 md:mb-2">
                   {category.name}
                 </h3>
-                <p className="text-muted-foreground font-light text-sm tracking-wide">
+                <p className="text-xs md:text-sm text-muted-foreground font-light tracking-wide">
                   {category.description}
                 </p>
-                <div className="mt-4">
-                  <span className="text-sm text-foreground hover:text-grey transition-colors duration-200 cursor-pointer">
+                <div className="mt-2 md:mt-4">
+                  <span className="text-xs md:text-sm text-foreground hover:text-gray-500 transition-colors duration-200">
                     EXPLORE →
                   </span>
                 </div>
