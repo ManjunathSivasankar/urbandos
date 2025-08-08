@@ -97,7 +97,8 @@ const Contact = () => {
 
           <div className="border-t border-border pt-8">
             <p className="text-muted-foreground font-light">
-              Email: <span className="text-foreground">hello@urbandos.com</span>
+              Email: <span className="text-foreground">urbandos7@gamil.com</span><br/>
+              Phone: <span className="text-foreground">+91 9345974814</span>
             </p>
           </div>
         </div>
