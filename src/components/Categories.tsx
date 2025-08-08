@@ -29,12 +29,12 @@ const categories = [
     description: 'Classic fit. Timeless design.',
     image: comingsoon
   },
-  {
+  /*{
     id: 'hoodies',
     name: 'Hoodies',
     description: 'Urban essential.',
     image: comingsoon
-  },
+  },*/
   {
     id: 'acid-wash',
     name: 'Acid-Wash-Tees',

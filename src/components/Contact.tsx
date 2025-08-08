@@ -2,11 +2,11 @@ import { MessageCircle, Clock, Instagram } from 'lucide-react';
 
 const Contact = () => {
   const openWhatsApp = () => {
-    window.open('https://wa.me/+919345974814?text=Hi, I have a question about UrbanDos clothing!', '_blank');
+    window.open('https://wa.me/1234567890?text=Hi, I have a question about UrbanDos clothing!', '_blank');
   };
 
   const openInstagram = () => {
-    window.open('https://www.instagram.com/urban.dos/', '_blank');
+    window.open('https://instagram.com/urbandos', '_blank');
   };
 
   return (
@@ -16,12 +16,13 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-thin tracking-widest text-foreground mb-8">
             GET IN TOUCH
           </h2>
-          
+
           <p className="text-lg text-muted-foreground font-light leading-relaxed mb-12">
             Questions about sizing, orders, or just want to chat? We're here to help.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* WhatsApp */}
             <div className="text-center">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="text-primary-foreground" size={24} />
@@ -37,6 +38,7 @@ const Contact = () => {
               </button>
             </div>
 
+            {/* Support Hours */}
             <div className="text-center">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="text-primary-foreground" size={24} />
@@ -50,6 +52,7 @@ const Contact = () => {
               </p>
             </div>
 
+            {/* Instagram */}
             <div className="text-center">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Instagram className="text-primary-foreground" size={24} />
@@ -66,10 +69,35 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Instagram Reels Section */}
+          <div className="mb-12">
+            <h3 className="text-2xl md:text-3xl font-thin tracking-widest text-foreground mb-8 text-center">
+              LATEST REELS
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {/* Replace these URLs with real embed links from Instagram */}
+
+              <div className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+                <div className="aspect-[9/16] bg-muted flex items-center justify-center">
+                  <iframe
+                    src="https://www.instagram.com/reel/DM70It4IjxF/embed"
+                    width="100%"
+                    height="100%"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    frameBorder="0"
+                    className="rounded-lg w-full h-full"
+                  ></iframe>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <div className="border-t border-border pt-8">
             <p className="text-muted-foreground font-light">
-              Email: <span className="text-foreground">urbandos7@gmail.com</span><br/>
-              Phone: <span className="text-foreground">+91 9345974814</span>
+              Email: <span className="text-foreground">hello@urbandos.com</span>
             </p>
           </div>
         </div>

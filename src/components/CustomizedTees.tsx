@@ -1,43 +1,40 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
 
 const customizedTees = [
   {
     id: 1,
     name: "Custom Design 1",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop&crop=center",
-    description: "Personalized street design"
+    image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
+    description: "Personalized street design",
+    instagramUrl: "https://www.instagram.com/p/DM74cdFIY70/?img_index=1"
   },
-  {
+/*  {
     id: 2,
     name: "Custom Design 2", 
     image: "https://images.unsplash.com/photo-1583743814966-8936f37f0df3?w=400&h=400&fit=crop&crop=center",
-    description: "Urban art custom print"
+    description: "Urban art custom print",
+    instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_2"
   },
   {
     id: 3,
     name: "Custom Design 3",
     image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop&crop=center", 
-    description: "Minimalist custom design"
+    description: "Minimalist custom design",
+    instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_3"
   },
   {
     id: 4,
     name: "Custom Design 4",
     image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=400&fit=crop&crop=center",
-    description: "Bold graphic custom tee"
-  }
+    description: "Bold graphic custom tee",
+    instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_4"
+  }*/
 ];
 
 const CustomizedTees = () => {
   const [showAll, setShowAll] = useState(false);
   const displayedTees = showAll ? customizedTees : customizedTees.slice(0, 2);
   const hasMore = customizedTees.length > 2;
-
-  const handleOrderWhatsApp = (teeName: string) => {
-    const message = `Hi! I want to order this ${teeName}. Please send me the customization details.`;
-    const whatsappUrl = `https://wa.me/+919876543210?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
 
   return (
     <section className="py-16 px-4 bg-background">
@@ -57,23 +54,22 @@ const CustomizedTees = () => {
               key={tee.id}
               className="group bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
-              <div className="aspect-square overflow-hidden">
+              <a
+                href={tee.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block aspect-square overflow-hidden"
+              >
                 <img
                   src={tee.image}
                   alt={tee.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 bg-white"
+
                 />
-              </div>
+              </a>
               <div className="p-4">
                 <h3 className="font-semibold text-foreground mb-2">{tee.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{tee.description}</p>
-                <Button
-                  onClick={() => handleOrderWhatsApp(tee.name)}
-                  className="w-full bg-foreground text-background hover:bg-foreground/90 transition-colors"
-                  size="sm"
-                >
-                  Order Custom
-                </Button>
+                <p className="text-sm text-muted-foreground">{tee.description}</p>
               </div>
             </div>
           ))}
@@ -81,25 +77,23 @@ const CustomizedTees = () => {
 
         {hasMore && !showAll && (
           <div className="text-center">
-            <Button
+            <button
               onClick={() => setShowAll(true)}
-              variant="outline"
-              className="px-8 py-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+              className="px-8 py-2 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors rounded"
             >
               View More
-            </Button>
+            </button>
           </div>
         )}
 
         {showAll && hasMore && (
           <div className="text-center">
-            <Button
+            <button
               onClick={() => setShowAll(false)}
-              variant="outline" 
-              className="px-8 py-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+              className="px-8 py-2 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors rounded"
             >
               Show Less
-            </Button>
+            </button>
           </div>
         )}
       </div>

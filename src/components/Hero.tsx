@@ -29,13 +29,12 @@ const Hero = () => {
             className="mx-auto w-[280px] md:w-[400px] mb-6"
           />
         <p className="text-xl md:text-2xl font-light tracking-wide text-gray-200 mb-12 max-w-2xl mx-auto">
-          Premium streetwear | customised Tees.
+          Streetwear redefined <br/>Customised Tees at affordable prices.
         </p>
         
         <button 
           onClick={scrollToCategories}
-          className="hero-button group"
-        >
+          className="hero-button group bg-black text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-500 ease-in-out hover:bg-white hover:text-black border border-black">
           EXPLORE COLLECTION
         </button>
       </div>

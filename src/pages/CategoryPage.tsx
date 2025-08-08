@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MessageCircle, X } from 'lucide-react';
+
 import tshirtBlack from '@/assets/oversized/black.png';
 import tshirtwhite from '@/assets/oversized/white.png';
 import tshirtaqua from '@/assets/oversized/Aqua.png';
@@ -9,7 +10,6 @@ import tshirtred from '@/assets/oversized/red.png';
 import tshirtskyblue from '@/assets/oversized/Sky Blue.png';
 import tshirtteal from '@/assets/oversized/Teal.png';
 import tshirtmagenta from '@/assets/oversized/magenta.png';
-
 
 import sweatblack from '@/assets/sweatshirts/black.png';
 import sweatwhite from '@/assets/sweatshirts/white.png';
@@ -20,26 +20,7 @@ import dropwhite from '@/assets/dropshoulder/white.png';
 import dropblack from '@/assets/dropshoulder/black.png';
 import dropbeige from '@/assets/dropshoulder/Beige.png';
 
-
-
-
-
 const categoryData = {
-  /*'oversized-tshirts': {
-    name: 'Oversized T-Shirts 240GSM',
-    description: 'Relaxed fit t-shirts for ultimate comfort and style',
-    products: [
-      { id: 1, color: 'Black', image: tshirtBlack, price: '₹349' },
-      { id: 2, color: 'White', image: tshirtwhite, price: '₹349' },
-      { id: 3, color: 'Aqua', image: tshirtaqua, price: '₹349' },
-      { id: 4, color: 'Dark Maroon', image: tshirtmaroon, price: '₹349' },
-      { id: 5, color: 'red', image: tshirtred, price: '₹349' },
-      { id: 6, color: 'skyblue', image: tshirtskyblue, price: '₹349' },
-      { id: 7, color: 'teal', image: tshirtteal, price: '₹349' },
-      { id: 8, color: 'magenta', image: tshirtmagenta, price: '₹349' },
-
-    ]
-  },*/
   'sweatshirts': {
     name: 'Sweatshirts',
     description: 'Cotton Sweatshirt-Unisex!! 240Gsm French Terry',
@@ -51,7 +32,7 @@ const categoryData = {
     ]
   },
 
-  'Dropshoulder':{
+  'Dropshoulder': {
     name: 'Drop-Shoulder',
     description: 'Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)',
     products: [
@@ -59,36 +40,7 @@ const categoryData = {
       { id: 2, color: 'white', image: dropwhite, price: '₹349' },
       { id: 3, color: 'Beige', image: dropbeige, price: '₹349' },
     ]
-    
   },
-
-  /*'regular-tshirts': {
-    name: 'Regular T-Shirts',
-    description: 'Classic fit t-shirts with premium materials',
-    products: [
-      { id: 7, color: 'Black', image: tshirtBlack, price: '$35' },
-      { id: 8, color: 'White', image: tshirtWhite, price: '$35' },
-      { id: 9, color: 'Silver', image: tshirtSilver, price: '$35' },
-    ]
-  },
-  'hoodies': {
-    name: 'Hoodies',
-    description: 'Urban essentials for street style',
-    products: [
-      { id: 10, color: 'Black', image: hoodieBlack, price: '$85' },
-      { id: 11, color: 'White', image: tshirtWhite, price: '$85' },
-      { id: 12, color: 'Silver', image: tshirtSilver, price: '$85' },
-    ]
-  },
-   'acid-wash': {
-    name: 'Acid-Wash Tees',
-    description: 'Urban essentials for street style',
-    products: [
-      { id: 10, color: 'Black', image: hoodieBlack, price: '$85' },
-      { id: 11, color: 'White', image: tshirtWhite, price: '$85' },
-      { id: 12, color: 'Silver', image: tshirtSilver, price: '$85' },
-    ]
-  } */
 };
 
 const sizes = ['M', 'L', 'XL'];
@@ -97,8 +49,9 @@ const CategoryPage = () => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [expandedCards, setExpandedCards] = useState<{ [key: number]: boolean }>({});
 
-    useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -121,6 +74,10 @@ const CategoryPage = () => {
     const message = `Hi, I'd like to order this ${category.name} in ${product.color}, Size ${size}. Price: ${product.price}`;
     const whatsappUrl = `https://wa.me/+919345974814?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleOrderNowClick = (productId: number) => {
+    setExpandedCards((prev) => ({ ...prev, [productId]: true }));
   };
 
   return (
@@ -153,7 +110,7 @@ const CategoryPage = () => {
               className="product-card group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Clickable Image */}
+              {/* Image */}
               <div
                 className="aspect-square overflow-hidden bg-secondary cursor-pointer"
                 onClick={() => setPreviewImage(product.image)}
@@ -165,6 +122,7 @@ const CategoryPage = () => {
                 />
               </div>
 
+              {/* Info */}
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -180,31 +138,42 @@ const CategoryPage = () => {
                   </span>
                 </div>
 
-                {/* Size Selection */}
-                <div className="mb-6">
-                  <p className="text-sm text-muted-foreground mb-3 font-light tracking-wide">
-                    Available Sizes:
-                  </p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {sizes.map((size) => (
-                      <button
-                        key={size}
-                        onClick={() => orderViaWhatsApp(product, size)}
-                        className="bg-secondary hover:bg-primary hover:text-primary-foreground 
-                                 text-foreground border border-border hover:border-primary
-                                 py-2 px-4 transition-all duration-300 ease-out
-                                 text-sm font-medium tracking-wide flex items-center justify-center gap-2"
-                      >
-                        <MessageCircle size={14} />
-                        {size}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <p className="text-xs text-muted-foreground text-center font-light">
-                  Click size to order via WhatsApp
-                </p>
+                {/* Conditional Size Selection */}
+                {!expandedCards[product.id] ? (
+                  <button
+                    onClick={() => handleOrderNowClick(product.id)}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90
+                      py-2 px-4 rounded transition-all w-full text-sm font-medium tracking-wide"
+                  >
+                    Order Now
+                  </button>
+                ) : (
+                  <>
+                    <div className="mb-4">
+                      <p className="text-sm text-muted-foreground mb-3 font-light tracking-wide">
+                        Select Size to Order via WhatsApp:
+                      </p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {sizes.map((size) => (
+                          <button
+                            key={size}
+                            onClick={() => orderViaWhatsApp(product, size)}
+                            className="bg-secondary hover:bg-primary hover:text-primary-foreground 
+                              text-foreground border border-border hover:border-primary
+                              py-2 px-4 transition-all duration-300 ease-out
+                              text-sm font-medium tracking-wide flex items-center justify-center gap-2"
+                          >
+                            <MessageCircle size={14} />
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-xs text-muted-foreground text-center font-light">
+                      Tap a size to continue via WhatsApp
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           ))}
