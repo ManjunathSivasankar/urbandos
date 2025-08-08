@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import Categories from '@/components/Categories';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
+import CustomizedTees from '@/components/CustomizedTees';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -12,6 +13,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Categories />
+      <CustomizedTees />
       <About />
       <Contact />
       <Footer />
