@@ -1,5 +1,5 @@
-import { ChevronDown } from 'lucide-react';
-import heroImage from '@/assets/hero-image.jpg';
+import { ChevronDown, Instagram } from 'lucide-react';
+import hero from '@/assets/hero.jpg';
 
 const Hero = () => {
   const scrollToCategories = () => {
@@ -9,12 +9,16 @@ const Hero = () => {
     }
   };
 
+  const openInstagram = () => {
+    window.open('https://www.instagram.com/urban.dos/', '_blank');
+  };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src={heroImage} 
+          src={hero} 
           alt="UrbanDos Premium Clothing" 
           className="w-full h-full object-cover"
         />
@@ -23,20 +27,32 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 fade-in">
-          <img 
-            src="/urbandos.svg" // Static path from public folder
-            alt="URBANDOS Logo"
-            className="mx-auto w-[280px] md:w-[400px] mb-6"
-          />
+        <img 
+          src="/urbandos.svg" // Static path from public folder
+          alt="URBANDOS Logo"
+          className="mx-auto w-[280px] md:w-[400px] mb-6"
+        />
         <p className="text-xl md:text-2xl font-light tracking-wide text-gray-200 mb-12 max-w-2xl mx-auto">
           Streetwear redefined <br/>Customised Tees at affordable prices.
         </p>
         
-        <button 
-          onClick={scrollToCategories}
-          className="hero-button group bg-black text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-500 ease-in-out hover:bg-white hover:text-black border border-black">
-          EXPLORE COLLECTION
-        </button>
+        {/* Buttons */}
+        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <button 
+            onClick={scrollToCategories}
+            className="hero-button group bg-black text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-500 ease-in-out hover:bg-white hover:text-black border border-black"
+          >
+            EXPLORE COLLECTION
+          </button>
+
+          <button 
+            onClick={openInstagram}
+            className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-500 ease-in-out hover:bg-pink-700"
+          >
+            <Instagram size={18} />
+            Follow on Instagram
+          </button>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
