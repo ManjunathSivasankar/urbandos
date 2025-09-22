@@ -8,10 +8,10 @@ const customizedTees = [
     description: "Personalized street design",
     instagramUrl: "https://www.instagram.com/p/DM74cdFIY70/?img_index=1"
   },
-/*  {
+ {
     id: 2,
     name: "Custom Design 2", 
-    image: "https://images.unsplash.com/photo-1583743814966-8936f37f0df3?w=400&h=400&fit=crop&crop=center",
+    image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
     description: "Urban art custom print",
     instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_2"
   },
@@ -28,7 +28,7 @@ const customizedTees = [
     image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=400&fit=crop&crop=center",
     description: "Bold graphic custom tee",
     instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_4"
-  }*/
+  }
 ];
 
 const CustomizedTees = () => {
