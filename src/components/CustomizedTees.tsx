@@ -9,10 +9,10 @@ const customizedTees = [
     instagramUrl: "https://www.instagram.com/p/DM74cdFIY70/?img_index=1",
     price: "₹649"
   },
-  {
+ {
     id: 2,
-    name: "Custom Design 2",
-    image: "https://i.postimg.cc/HkKxnBxw/image.png",
+    name: "Custom Design 2", 
+    image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
     description: "Urban art custom print",
     instagramUrl: "https://www.instagram.com/p/DOCs5NMk7LR/?img_index=1",
     price: "₹699"
@@ -62,8 +62,7 @@ const customizedTees = [
     name: "Custom Design 8",
     image: "https://i.postimg.cc/fLKkzdrm/image.png",
     description: "Bold graphic custom tee",
-    instagramUrl: "https://www.instagram.com/p/DOx29YCEQHX/?img_index=1",
-    price: "₹899"
+    instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_4"
   }
 ];
 
