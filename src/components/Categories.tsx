@@ -6,8 +6,20 @@ import dropfront from '@/assets/drop.png';
 
 const categories = [
   {
+      id: 'regular-tshirts',
+    name: 'Regular T-Shirts',
+    description: 'Classic fit. Timeless design.',
+    image: comingsoon
+  },
+  {
     id: 'oversized-tshirts',
     name: 'Oversized T-Shirts',
+    description: 'Relaxed fit. Bold statement.',
+    image: oversized
+  },
+    {
+    id: 'Polo-Shirts',
+    name: 'Polo T-shirts',
     description: 'Relaxed fit. Bold statement.',
     image: oversized
   },
@@ -18,29 +30,25 @@ const categories = [
     image: sweatshirt
   },
   {
-    id: 'Dropshoulder',
-    name: 'Drop-Shoulder',
-    description: 'Comfort meets style.',
-    image: dropfront
-  },
-  {
-    id: 'regular-tshirts',
-    name: 'Regular T-Shirts',
-    description: 'Classic fit. Timeless design.',
-    image: comingsoon
-  },
-  /*{
     id: 'hoodies',
     name: 'Hoodies',
     description: 'Urban essential.',
     image: comingsoon
-  },*/
-  {
+  },
+    {
     id: 'acid-wash',
     name: 'Acid-Wash-Tees',
     description: 'Urban essential.',
     image: comingsoon
   }
+  /*{
+    id: 'Dropshoulder',
+    name: 'Drop-Shoulder',
+    description: 'Comfort meets style.',
+    image: dropfront
+  },*/
+  
+
 ];
 
 const Categories = () => {

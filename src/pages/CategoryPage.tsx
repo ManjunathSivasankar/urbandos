@@ -16,21 +16,36 @@ import sweatwhite from '@/assets/sweatshirts/white.png';
 import sweatliteblue from '@/assets/sweatshirts/liteblue.png';
 import sweatbottelgreen from '@/assets/sweatshirts/Bottle Green.png';
 
-import dropwhite from '@/assets/dropshoulder/white.png';
+/*import dropwhite from '@/assets/dropshoulder/white.png';
 import dropblack from '@/assets/dropshoulder/black.png';
 import dropbeige from '@/assets/dropshoulder/Beige.png';
-import size from '@/assets/size.jpeg';
+import size from '@/assets/size.jpeg';*/
 
 const categoryData = {
+ 'regular-tshirts': {
+    name: 'Oversized T-Shirts',
+    description: 'Unisex !! 220Gsm Premium Cotton Oversized Tees',
+    products: [
+      { id: 1, color: 'Black', image: tshirtBlack, price: '₹349' },
+      /*{ id: 2, color: 'White', image: tshirtwhite, price: '₹349' },
+      { id: 3, color: 'Aqua', image: tshirtaqua, price: '₹349' },
+      { id: 4, color: 'Dark Maroon', image: tshirtmaroon, price: '₹349' },
+      { id: 5, color: 'Red', image: tshirtred, price: '₹349' },*/
+    ]
+  },
+
+
+
+
   'oversized-tshirts': {
     name: 'Oversized T-Shirts',
     description: 'Unisex !! 220Gsm Premium Cotton Oversized Tees',
     products: [
       { id: 1, color: 'Black', image: tshirtBlack, price: '₹349' },
-      { id: 2, color: 'White', image: tshirtwhite, price: '₹349' },
+      /*{ id: 2, color: 'White', image: tshirtwhite, price: '₹349' },
       { id: 3, color: 'Aqua', image: tshirtaqua, price: '₹349' },
       { id: 4, color: 'Dark Maroon', image: tshirtmaroon, price: '₹349' },
-      { id: 5, color: 'Red', image: tshirtred, price: '₹349' },
+      { id: 5, color: 'Red', image: tshirtred, price: '₹349' },*/
     ]
   },
   'sweatshirts': {
@@ -38,12 +53,12 @@ const categoryData = {
     description: 'Cotton Sweatshirt-Unisex!! 240Gsm French Terry',
     products: [
       { id: 1, color: 'Black', image: sweatblack, price: '₹459' },
-      { id: 2, color: 'White', image: sweatwhite, price: '₹459' },
+      /*{ id: 2, color: 'White', image: sweatwhite, price: '₹459' },
       { id: 3, color: 'Lite Blue', image: sweatliteblue, price: '₹459' },
-      { id: 4, color: 'Bottle Green', image: sweatbottelgreen, price: '₹459' },
+      { id: 4, color: 'Bottle Green', image: sweatbottelgreen, price: '₹459' },*/
     ]
   },
-  'Dropshoulder': {
+  /*'Dropshoulder': {
     name: 'Drop-Shoulder',
     description: 'Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)',
     products: [
@@ -51,7 +66,7 @@ const categoryData = {
       { id: 2, color: 'White', image: dropwhite, price: '₹349' },
       { id: 3, color: 'Beige', image: dropbeige, price: '₹349' },
     ]
-  },
+  },*/
 };
 
 const sizes = ['M', 'L', 'XL'];
