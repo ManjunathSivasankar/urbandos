@@ -42,7 +42,7 @@ const Hero = () => {
             onClick={scrollToCategories}
             className="hero-button group bg-black text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-500 ease-in-out hover:bg-white hover:text-black border border-black"
           >
-            EXPLORE COLLECTION
+             COLLECTION
           </button>
 
           <button 

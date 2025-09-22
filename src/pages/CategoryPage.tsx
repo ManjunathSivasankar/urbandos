@@ -16,7 +16,27 @@ import dropblack from '@/assets/dropshoulder/black.png';
 import dropbeige from '@/assets/dropshoulder/Beige.png';
 import sizeImg from '@/assets/size.jpeg';
 
+/*import dropwhite from '@/assets/dropshoulder/white.png';
+import dropblack from '@/assets/dropshoulder/black.png';
+import dropbeige from '@/assets/dropshoulder/Beige.png';
+import size from '@/assets/size.jpeg';*/
+
 const categoryData = {
+ 'regular-tshirts': {
+    name: 'Oversized T-Shirts',
+    description: 'Unisex !! 220Gsm Premium Cotton Oversized Tees',
+    products: [
+      { id: 1, color: 'Black', image: tshirtBlack, price: '₹349' },
+      /*{ id: 2, color: 'White', image: tshirtwhite, price: '₹349' },
+      { id: 3, color: 'Aqua', image: tshirtaqua, price: '₹349' },
+      { id: 4, color: 'Dark Maroon', image: tshirtmaroon, price: '₹349' },
+      { id: 5, color: 'Red', image: tshirtred, price: '₹349' },*/
+    ]
+  },
+
+
+
+
   'oversized-tshirts': {
     name: 'Oversized T-Shirts',
     description: 'Unisex !! 220Gsm Premium Cotton Oversized Tees',
@@ -36,9 +56,8 @@ const categoryData = {
       { id: 2, color: 'White', image: sweatwhite, price: '₹459', stock: { M: 4, L: 3, XL: 2 } },
       { id: 3, color: 'Lite Blue', image: sweatliteblue, price: '₹459', stock: { M: 2, L: 1, XL: 3 } },
       { id: 4, color: 'Bottle Green', image: sweatbottelgreen, price: '₹459', stock: { M: 1, L: 2, XL: 2 } },
-    ]
-  },
-  'Dropshoulder': {
+  ]},
+  Dropshoulder: {
     name: 'Drop-Shoulder',
     description: 'Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)',
     products: [
@@ -46,7 +65,7 @@ const categoryData = {
       { id: 2, color: 'White', image: dropwhite, price: '₹349', stock: { M: 1, L: 3, XL: 2 } },
       { id: 3, color: 'Beige', image: dropbeige, price: '₹349', stock: { M: 0, L: 2, XL: 1 } },
     ]
-  },
+  }
 };
 
 const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<React.SetStateAction<any[]>> }) => {
