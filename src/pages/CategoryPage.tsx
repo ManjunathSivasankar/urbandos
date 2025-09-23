@@ -16,27 +16,7 @@ import dropblack from '@/assets/dropshoulder/black.png';
 import dropbeige from '@/assets/dropshoulder/Beige.png';
 import sizeImg from '@/assets/size.jpeg';
 
-/*import dropwhite from '@/assets/dropshoulder/white.png';
-import dropblack from '@/assets/dropshoulder/black.png';
-import dropbeige from '@/assets/dropshoulder/Beige.png';
-import size from '@/assets/size.jpeg';*/
-
 const categoryData = {
- 'regular-tshirts': {
-    name: 'Oversized T-Shirts',
-    description: 'Unisex !! 220Gsm Premium Cotton Oversized Tees',
-    products: [
-      { id: 1, color: 'Black', image: tshirtBlack, price: '₹349' },
-      /*{ id: 2, color: 'White', image: tshirtwhite, price: '₹349' },
-      { id: 3, color: 'Aqua', image: tshirtaqua, price: '₹349' },
-      { id: 4, color: 'Dark Maroon', image: tshirtmaroon, price: '₹349' },
-      { id: 5, color: 'Red', image: tshirtred, price: '₹349' },*/
-    ]
-  },
-
-
-
-
   'oversized-tshirts': {
     name: 'Oversized T-Shirts',
     description: 'Unisex !! 220Gsm Premium Cotton Oversized Tees',
@@ -48,7 +28,7 @@ const categoryData = {
       { id: 5, color: 'Red', image: tshirtred, price: '₹349', stock: { M: 4, L: 0, XL: 3 } },
     ]
   },
-  'sweatshirts': {
+  sweatshirts: {
     name: 'Sweatshirts',
     description: 'Cotton Sweatshirt-Unisex!! 240Gsm French Terry',
     products: [
@@ -56,7 +36,8 @@ const categoryData = {
       { id: 2, color: 'White', image: sweatwhite, price: '₹459', stock: { M: 4, L: 3, XL: 2 } },
       { id: 3, color: 'Lite Blue', image: sweatliteblue, price: '₹459', stock: { M: 2, L: 1, XL: 3 } },
       { id: 4, color: 'Bottle Green', image: sweatbottelgreen, price: '₹459', stock: { M: 1, L: 2, XL: 2 } },
-  ]},
+    ]
+  },
   Dropshoulder: {
     name: 'Drop-Shoulder',
     description: 'Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)',
@@ -72,6 +53,7 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [openProduct, setOpenProduct] = useState<number | null>(null); // Track which product shows sizes
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,35 +74,29 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
     );
   }
 
-const handleSizeClick = (product: any, size: string) => {
-  // Check if same product (id + size) already exists in cart
-  const existingIndex = cart.findIndex(
-    (item) => item.id === product.id && item.size === size
-  );
+  const handleSizeClick = (product: any, size: string) => {
+    const existingIndex = cart.findIndex(
+      (item) => item.id === product.id && item.size === size
+    );
 
-  if (existingIndex !== -1) {
-    // Increase quantity if already in cart
-    const updatedCart = [...cart];
-    updatedCart[existingIndex].quantity += 1;
-    setCart(updatedCart);
-  } else {
-    // Add new item with category name as product name
-    setCart([
-      ...cart,
-      {
-        ...product,
-        name: category.name, // <-- add category name here
-        size,
-        quantity: 1,
-      },
-    ]);
-  }
+    if (existingIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingIndex].quantity += 1;
+      setCart(updatedCart);
+    } else {
+      setCart([
+        ...cart,
+        {
+          ...product,
+          name: category.name,
+          size,
+          quantity: 1,
+        },
+      ]);
+    }
 
-  // Navigate to cart if needed
-  navigate("/cart", { state: { from: `/category/${categoryId}` } });
-};
-
-
+    navigate("/cart", { state: { from: `/category/${categoryId}` } });
+  };
 
   return (
     <div className="min-h-screen bg-background pt-0">
@@ -155,31 +131,44 @@ const handleSizeClick = (product: any, size: string) => {
                   <span className="text-xl font-medium text-foreground">{product.price}</span>
                 </div>
 
-                {/* Size buttons with stock */}
-                <div className="mb-4">
-                  <p className="text-sm text-muted-foreground mb-3 font-light tracking-wide">
-                    Select Size to Add to Cart:
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {Object.entries(product.stock).map(([size, qty]) => (
-                      <button
-                        key={size}
-                        disabled={qty === 0}
-                        onClick={() => handleSizeClick(product, size)}
-                        className={`py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 shadow-sm border ${
-                          qty === 0
-                            ? 'bg-gray-200 text-gray-400 border-gray-200 cursor-not-allowed'
-                            : 'bg-white text-foreground border-gray-300 hover:bg-primary hover:text-white'
-                        }`}
-                      >
-                        {size} ({qty})
-                      </button>
-                    ))}
+                {/* Order Now → then show sizes */}
+                {openProduct === product.id ? (
+                  <div className="mb-4">
+                    <p className="text-sm text-muted-foreground mb-3 font-light tracking-wide">
+                      Select Size to Add to Cart:
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {Object.entries(product.stock).map(([size, qty]) => (
+                        <button
+                          key={size}
+                          disabled={qty === 0}
+                          onClick={() => handleSizeClick(product, size)}
+                          className={`py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 shadow-sm border ${
+                            qty === 0
+                              ? 'bg-gray-200 text-gray-400 border-gray-200 cursor-not-allowed'
+                              : 'bg-white text-foreground border-gray-300 hover:bg-primary hover:text-white'
+                          }`}
+                        >
+                          {size} ({qty})
+                        </button>
+                      ))}
+                    </div>
+<button
+  onClick={() => setOpenProduct(null)}
+  className="px-4 py-2 text-sm rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
+>
+  Cancel
+</button>
+
                   </div>
-                  <p className="text-xs text-muted-foreground text-center font-light">
-                    Tap a size to add the product to your cart
-                  </p>
-                </div>
+                ) : (
+                  <button
+                    onClick={() => setOpenProduct(product.id)}
+                    className="w-full py-2 px-4 rounded-md bg-primary text-white font-semibold hover:bg-primary/90 transition"
+                  >
+                    Order Now
+                  </button>
+                )}
               </div>
             </div>
           ))}
