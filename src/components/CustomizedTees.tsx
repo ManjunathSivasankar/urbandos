@@ -12,7 +12,7 @@ const customizedTees = [
  {
     id: 2,
     name: "Custom Design 2", 
-    image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
+    image: "https://i.postimg.cc/qqv0CMJS/image.png",
     description: "Urban art custom print",
     instagramUrl: "https://www.instagram.com/p/DOCs5NMk7LR/?img_index=1",
     price: "₹699"
