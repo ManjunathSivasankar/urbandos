@@ -10,6 +10,7 @@ import CategoryPage from "./pages/CategoryPage";
 import CartPage from "./pages/CartPage";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
+import CustomizedTees from "./components/CustomizedTees";
 
 const queryClient = new QueryClient();
 
@@ -23,28 +24,55 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Home page with ComboOffers */}
+            {/* Home page */}
             <Route
               path="/"
               element={
                 <>
-                  <Navbar cartItemCount={cart.length} />
+                  <Navbar cart={cart} setCart={setCart} />
                   <Index cart={cart} setCart={setCart} />
                 </>
               }
             />
 
-            {/* Category page */}
+            {/* Category page WITHOUT Navbar */}
             <Route
               path="/category/:categoryId"
               element={<CategoryPage cart={cart} setCart={setCart} />}
             />
 
             {/* Cart page */}
-            <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
+            <Route
+              path="/cart"
+              element={
+                <>
+                  <Navbar cart={cart} setCart={setCart} />
+                  <CartPage cart={cart} setCart={setCart} />
+                </>
+              }
+            />
+
+            {/* Customized Tees page */}
+            <Route
+              path="/customized"
+              element={
+                <>
+                  <Navbar cart={cart} setCart={setCart} />
+                  <CustomizedTees cart={cart} setCart={setCart} />
+                </>
+              }
+            />
 
             {/* 404 Not Found */}
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={
+                <>
+                  <Navbar cart={cart} setCart={setCart} />
+                  <NotFound />
+                </>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
