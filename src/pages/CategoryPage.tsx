@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, X, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, X } from 'lucide-react';
 
 import tshirtBlack from '@/assets/oversized/black.png';
 import tshirtwhite from '@/assets/oversized/white.png';
@@ -58,12 +58,115 @@ interface CartItem {
   image: string;
 }
 
+const PaymentSection = ({
+  cart,
+  setCart,
+  total,
+}: {
+  cart: CartItem[];
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  total: number;
+}) => {
+  const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+
+  const handlePaymentConfirm = () => {
+    setPaymentSuccess(true);
+
+    const phone = "919345974814";
+    const orderDetails = cart
+      .map(
+        item =>
+          `${item.color} (${item.size}) x${item.quantity} - ₹${Number(item.price.replace("₹", "")) * item.quantity}`
+      )
+      .join("\n");
+
+    const message = `📦 New Order Received!\n\n${orderDetails}\n\nTotal: ₹${total}\nPayment Method: ${selectedPayment}`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+  };
+
+  if (paymentSuccess) {
+    return <div className="text-green-600 font-semibold">Payment Success! 🎉</div>;
+  }
+
+  return (
+    <div className="flex flex-col gap-4">
+      {!selectedPayment ? (
+        <>
+          <p className="font-semibold">Select Payment Method:</p>
+          <div className="flex flex-col md:flex-row gap-4">
+            {["UPI", "Net Banking", "COD", "Card"].map((method) => (
+              <button
+                key={method}
+                className="py-2 px-4 rounded-xl border font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
+                onClick={() => setSelectedPayment(method)}
+              >
+                {method}
+              </button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="p-4 border rounded-xl bg-gray-50">
+          {selectedPayment === "UPI" && (
+            <div className="flex flex-col items-center">
+              <p className="mb-2 font-semibold">Scan this UPI QR to pay</p>
+              <img src="/path-to-your-upi-qr.png" alt="UPI QR" className="w-40 h-40 object-contain" />
+            </div>
+          )}
+          {selectedPayment === "Net Banking" && (
+            <div>
+              <p className="font-semibold mb-2">Bank Details:</p>
+              <p>Bank: ABC Bank</p>
+              <p>Account: 1234567890</p>
+              <p>IFSC: ABCD0123456</p>
+            </div>
+          )}
+          {selectedPayment === "COD" && (
+            <div>
+              <p className="font-semibold">Cash on Delivery selected.</p>
+              <p>Pay ₹{total} when your order arrives.</p>
+            </div>
+          )}
+          {selectedPayment === "Card" && (
+            <div className="flex flex-col gap-2">
+              <p className="font-semibold mb-2">Enter Card Details:</p>
+              <input type="text" placeholder="Card Number" className="border rounded p-2 w-full" />
+              <input type="text" placeholder="Name on Card" className="border rounded p-2 w-full" />
+              <div className="flex gap-2">
+                <input type="text" placeholder="Expiry MM/YY" className="border rounded p-2 w-1/2" />
+                <input type="text" placeholder="CVV" className="border rounded p-2 w-1/2" />
+              </div>
+            </div>
+          )}
+
+          <div className="flex gap-4 mt-4">
+            <button
+              className="bg-green-500 text-white py-2 px-6 rounded-xl font-semibold hover:bg-green-600 transition"
+              onClick={handlePaymentConfirm}
+            >
+              Confirm Payment
+            </button>
+            <button
+              className="bg-gray-200 text-gray-700 py-2 px-6 rounded-xl hover:bg-gray-300 transition"
+              onClick={() => setSelectedPayment(null)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const CategoryPage = ({ cart, setCart }: { cart: CartItem[]; setCart: React.Dispatch<React.SetStateAction<CartItem[]>> }) => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [openProduct, setOpenProduct] = useState<number | null>(null);
   const [showCart, setShowCart] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,7 +208,6 @@ const CategoryPage = ({ cart, setCart }: { cart: CartItem[]; setCart: React.Disp
       ]);
     }
 
-    // Open cart modal instead of navigating away
     setShowCart(true);
     setOpenProduct(null);
   };
@@ -185,14 +287,13 @@ const CategoryPage = ({ cart, setCart }: { cart: CartItem[]; setCart: React.Disp
 
       {/* Cart Modal */}
       {showCart && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/* Blur background */}
+        <div className="fixed inset-0 z-50 flex">
           <div
             className="absolute inset-0 backdrop-blur-sm bg-black/20"
             onClick={() => setShowCart(false)}
           ></div>
 
-          <div className="relative bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-auto p-6 z-50">
+          <div className="relative bg-white w-2/5 h-full max-h-full overflow-auto p-6 z-50 shadow-xl flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold">Your Cart</h2>
               <button onClick={() => setShowCart(false)}>
@@ -203,7 +304,7 @@ const CategoryPage = ({ cart, setCart }: { cart: CartItem[]; setCart: React.Disp
             {cart.length === 0 ? (
               <p className="text-center text-gray-500 py-12">Your cart is empty.</p>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 flex-1 overflow-auto">
                 {cart.map((item, idx) => (
                   <div key={idx} className="flex justify-between items-center p-4 border rounded-xl">
                     <div className="flex items-center gap-4">
@@ -229,16 +330,25 @@ const CategoryPage = ({ cart, setCart }: { cart: CartItem[]; setCart: React.Disp
             )}
 
             {cart.length > 0 && (
-              <div className="mt-6 flex justify-between items-center">
+              <div className="mt-6 flex flex-col gap-4">
                 <span className="text-xl font-bold">
                   Total: ₹{cart.reduce((sum, item) => sum + Number(item.price.replace('₹',''))*item.quantity,0)}
                 </span>
-                <button
-                  onClick={() => alert('Implement payment here')}
-                  className="bg-primary text-white py-2 px-6 rounded-xl font-semibold hover:bg-primary/90 transition"
-                >
-                  Checkout
-                </button>
+
+                {!showPayment ? (
+                  <button
+                    onClick={() => setShowPayment(true)}
+                    className="bg-primary text-white py-2 px-6 rounded-xl font-semibold hover:bg-primary/90 transition"
+                  >
+                    Checkout
+                  </button>
+                ) : (
+                  <PaymentSection
+                    cart={cart}
+                    setCart={setCart}
+                    total={cart.reduce((sum, item) => sum + Number(item.price.replace('₹',''))*item.quantity,0)}
+                  />
+                )}
               </div>
             )}
           </div>
