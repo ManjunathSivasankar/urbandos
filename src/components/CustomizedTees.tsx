@@ -232,6 +232,8 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
     setShowCart(true);
   };
 
+  const visibleTees = showAll ? customizedTees : customizedTees.slice(0, 4);
+
   return (
     <section className="py-16 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -242,11 +244,19 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-          {(showAll ? customizedTees : customizedTees.slice(0, 4)).map(tee => (
-            <div key={tee.id} className="group bg-card border border-border rounded-none hover:shadow-md transition-all duration-300">
+        {/* Product Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+          {visibleTees.map(tee => (
+            <div
+              key={tee.id}
+              className="group bg-card border border-border rounded-none hover:shadow-md transition-all duration-300"
+            >
               <div className="aspect-square overflow-hidden bg-secondary">
-                <img src={tee.image} alt={tee.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img
+                  src={tee.image}
+                  alt={tee.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
               <div className="p-6">
@@ -295,100 +305,106 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
           ))}
         </div>
 
-        {!showAll && customizedTees.length > 4 && (
+        {/* View All / Show Less Button */}
+        {customizedTees.length > 4 && (
           <div className="text-center">
             <button
-              onClick={() => setShowAll(true)}
+              onClick={() => setShowAll(!showAll)}
               className="px-6 py-2 bg-primary text-white rounded-md font-semibold hover:bg-primary/90 transition"
             >
-              View All
+              {showAll ? "Show Less" : "View All"}
             </button>
           </div>
         )}
       </div>
 
-      {/* Cart Modal */}
-{/* Cart Modal */}
-{showCart && (
-  <div className="fixed inset-0 z-50 flex justify-center md:justify-end">
-    {/* Overlay */}
-    <div
-      className="absolute inset-0 backdrop-blur-sm bg-black/20"
-      onClick={() => setShowCart(false)}
-    ></div>
+      {/* Cart Modal (unchanged) */}
+      {showCart && (
+        <div className="fixed inset-0 z-50 flex justify-center md:justify-end">
+          <div
+            className="absolute inset-0 backdrop-blur-sm bg-black/20"
+            onClick={() => setShowCart(false)}
+          ></div>
 
-    {/* Modal */}
-    <div
-      className="relative bg-white w-full md:w-2/5 h-full max-h-full overflow-auto p-6 z-50 shadow-xl flex flex-col"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">Your Cart</h2>
-        <button onClick={() => setShowCart(false)}>
-          <X size={24} />
-        </button>
-      </div>
+          <div
+            className="relative bg-white w-full md:w-2/5 h-full max-h-full overflow-auto p-6 z-50 shadow-xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold">Your Cart</h2>
+              <button onClick={() => setShowCart(false)}>
+                <X size={24} />
+              </button>
+            </div>
 
-      {cart.length === 0 ? (
-        <p className="text-center text-gray-500 py-12">Your cart is empty.</p>
-      ) : (
-        <div className="space-y-4 flex-1 overflow-auto">
-          {cart.map((item, idx) => (
-            <div key={idx} className="flex justify-between items-center p-4 border rounded-xl">
-              <div className="flex items-center gap-4">
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg"
+            {cart.length === 0 ? (
+              <p className="text-center text-gray-500 py-12">Your cart is empty.</p>
+            ) : (
+              <div className="space-y-4 flex-1 overflow-auto">
+                {cart.map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center p-4 border rounded-xl">
+                    <div className="flex items-center gap-4">
+                      {item.image && (
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg"
+                        />
+                      )}
+                      <div>
+                        <p className="font-semibold">{item.name}</p>
+                        <p>Size: {item.size}</p>
+                        <p>Quantity: {item.quantity}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-semibold">
+                        ₹{Number(item.price.replace("₹", "")) * item.quantity}
+                      </p>
+                      <button
+                        className="text-red-500 text-sm mt-1 hover:text-red-600"
+                        onClick={() => setCart(cart.filter((_, i) => i !== idx))}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {cart.length > 0 && (
+              <div className="mt-6 flex flex-col gap-4">
+                <span className="text-xl font-bold">
+                  Total: ₹
+                  {cart.reduce(
+                    (sum, item) => sum + Number(item.price.replace("₹", "")) * item.quantity,
+                    0
+                  )}
+                </span>
+
+                {!showPayment ? (
+                  <button
+                    onClick={() => setShowPayment(true)}
+                    className="bg-primary text-white py-2 px-6 rounded-xl font-semibold hover:bg-primary/90 transition"
+                  >
+                    Checkout
+                  </button>
+                ) : (
+                  <PaymentSection
+                    cart={cart}
+                    setCart={setCart}
+                    total={cart.reduce(
+                      (sum, item) => sum + Number(item.price.replace("₹", "")) * item.quantity,
+                      0
+                    )}
                   />
                 )}
-                <div>
-                  <p className="font-semibold">{item.name}</p>
-                  <p>Size: {item.size}</p>
-                  <p>Quantity: {item.quantity}</p>
-                </div>
               </div>
-              <div className="text-right">
-                <p className="font-semibold">₹{Number(item.price.replace('₹',''))*item.quantity}</p>
-                <button
-                  className="text-red-500 text-sm mt-1 hover:text-red-600"
-                  onClick={() => setCart(cart.filter((_, i) => i !== idx))}
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          ))}
+            )}
+          </div>
         </div>
       )}
-
-      {cart.length > 0 && (
-        <div className="mt-6 flex flex-col gap-4">
-          <span className="text-xl font-bold">
-            Total: ₹{cart.reduce((sum, item) => sum + Number(item.price.replace('₹',''))*item.quantity,0)}
-          </span>
-
-          {!showPayment ? (
-            <button
-              onClick={() => setShowPayment(true)}
-              className="bg-primary text-white py-2 px-6 rounded-xl font-semibold hover:bg-primary/90 transition"
-            >
-              Checkout
-            </button>
-          ) : (
-            <PaymentSection
-              cart={cart}
-              setCart={setCart}
-              total={cart.reduce((sum, item) => sum + Number(item.price.replace('₹',''))*item.quantity,0)}
-            />
-          )}
-        </div>
-      )}
-    </div>
-  </div>
-)}
-
     </section>
   );
 };

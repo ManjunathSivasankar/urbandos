@@ -1,53 +1,63 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface NavbarProps {
   cartItemCount?: number;
+  setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Navbar = ({ cartItemCount = 0 }: NavbarProps) => {
+const Navbar = ({ cartItemCount = 0, setShowCart }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to section (works on homepage only)
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }
     setIsMobileMenuOpen(false);
   };
 
-  const textColorClass = isScrolled ? 'text-black' : 'text-white';
+  const textColorClass = isScrolled ? "text-black" : "text-white";
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-subtle border-b border-border'
-          : 'bg-transparent'
+          ? "bg-background/95 backdrop-blur-md shadow-subtle border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-
           {/* Logo */}
           <div
             className={`flex-shrink-0 flex items-center space-x-2 cursor-pointer ${textColorClass}`}
-            onClick={() => scrollToSection('hero')}
+            onClick={() => navigate("/")}
           >
             <img src="/logo.svg" alt="UrbanDos Logo" className="h-7 w-auto" />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            {['hero', 'categories', 'about', 'contact'].map((section) => (
+            {["hero", "categories", "about", "contact"].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
@@ -61,7 +71,7 @@ const Navbar = ({ cartItemCount = 0 }: NavbarProps) => {
             <div
               className="relative cursor-pointer p-2"
               title="Cart"
-              onClick={() => navigate('/cart')}
+              onClick={() => setShowCart(true)} // ✅ open cart drawer
             >
               <ShoppingCart size={24} className={textColorClass} />
               {cartItemCount > 0 && (
@@ -77,7 +87,7 @@ const Navbar = ({ cartItemCount = 0 }: NavbarProps) => {
             <div
               className="relative cursor-pointer p-2"
               title="Cart"
-              onClick={() => navigate('/cart')}
+              onClick={() => setShowCart(true)} // ✅ open cart drawer
             >
               <ShoppingCart size={24} className={textColorClass} />
               {cartItemCount > 0 && (
@@ -100,7 +110,7 @@ const Navbar = ({ cartItemCount = 0 }: NavbarProps) => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-border shadow-sm">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {['hero', 'categories', 'about', 'contact'].map((section) => (
+              {["hero", "categories", "about", "contact"].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}

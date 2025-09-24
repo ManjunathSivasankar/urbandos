@@ -44,7 +44,9 @@ const Contact = () => {
 
   // Dummy media
   const instagramReels = [
-    "https://www.instagram.com/reel/DM70It4IjxF/embed",
+    "https://www.instagram.com/reel/DOBtFCKEwF3/embed",
+    "https://www.instagram.com/reel/DNoA7Vqs4_2/embed",
+    "https://www.instagram.com/reel/DOx2deLkRcJ/embed",
     // add more links here
   ];
 
