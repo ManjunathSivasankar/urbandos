@@ -26,7 +26,7 @@ const categoryData = {
       { id: 3, color: 'Aqua', image: tshirtaqua, price: '₹349', stock: { M: 2, L: 3, XL: 2 } },
       { id: 4, color: 'Dark Maroon', image: tshirtmaroon, price: '₹349', stock: { M: 1, L: 2, XL: 1 } },
       { id: 5, color: 'Red', image: tshirtred, price: '₹349', stock: { M: 4, L: 0, XL: 3 } },
-    ]
+    ],
   },
   sweatshirts: {
     name: 'Sweatshirts',
@@ -36,24 +36,24 @@ const categoryData = {
       { id: 2, color: 'White', image: sweatwhite, price: '₹459', stock: { M: 4, L: 3, XL: 2 } },
       { id: 3, color: 'Lite Blue', image: sweatliteblue, price: '₹459', stock: { M: 2, L: 1, XL: 3 } },
       { id: 4, color: 'Bottle Green', image: sweatbottelgreen, price: '₹459', stock: { M: 1, L: 2, XL: 2 } },
-    ]
+    ],
   },
-  Dropshoulder: {
+  dropshoulder: {
     name: 'Drop-Shoulder',
     description: 'Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)',
     products: [
       { id: 1, color: 'Black', image: dropblack, price: '₹349', stock: { M: 2, L: 2, XL: 1 } },
       { id: 2, color: 'White', image: dropwhite, price: '₹349', stock: { M: 1, L: 3, XL: 2 } },
       { id: 3, color: 'Beige', image: dropbeige, price: '₹349', stock: { M: 0, L: 2, XL: 1 } },
-    ]
-  }
+    ],
+  },
 };
 
-const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<React.SetStateAction<any[]>> }) => {
+const CategoryPage = ({ cart, setCart }: { cart: any[]; setCart: React.Dispatch<React.SetStateAction<any[]>> }) => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [openProduct, setOpenProduct] = useState<number | null>(null); // Track which product shows sizes
+  const [openProduct, setOpenProduct] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,9 +75,7 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
   }
 
   const handleSizeClick = (product: any, size: string) => {
-    const existingIndex = cart.findIndex(
-      (item) => item.id === product.id && item.size === size
-    );
+    const existingIndex = cart.findIndex((item) => item.id === product.id && item.size === size);
 
     if (existingIndex !== -1) {
       const updatedCart = [...cart];
@@ -95,7 +93,7 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
       ]);
     }
 
-    navigate("/cart", { state: { from: `/category/${categoryId}` } });
+    navigate('/cart', { state: { from: `/category/${categoryId}` } });
   };
 
   return (
@@ -113,9 +111,7 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
           <h1 className="text-4xl md:text-5xl font-thin tracking-widest text-foreground mb-4">
             {category.name.toUpperCase()}
           </h1>
-          <p className="text-lg text-muted-foreground font-light tracking-wide">
-            {category.description}
-          </p>
+          <p className="text-lg text-muted-foreground font-light tracking-wide">{category.description}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -127,11 +123,10 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
 
               <div className="p-6">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-medium tracking-wide text-foreground">{category.name}</h3>
+                  <h3 className="text-xl font-medium tracking-wide text-foreground">{product.color}</h3>
                   <span className="text-xl font-medium text-foreground">{product.price}</span>
                 </div>
 
-                {/* Order Now → then show sizes */}
                 {openProduct === product.id ? (
                   <div className="mb-4">
                     <p className="text-sm text-muted-foreground mb-3 font-light tracking-wide">
@@ -153,13 +148,12 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
                         </button>
                       ))}
                     </div>
-<button
-  onClick={() => setOpenProduct(null)}
-  className="px-4 py-2 text-sm rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
->
-  Cancel
-</button>
-
+                    <button
+                      onClick={() => setOpenProduct(null)}
+                      className="px-4 py-2 text-sm rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
+                    >
+                      Cancel
+                    </button>
                   </div>
                 ) : (
                   <button
@@ -175,7 +169,6 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
         </div>
       </div>
 
-      {/* Contact Info */}
       <div className="border-t border-border pt-8 mt-12 pb-8 text-center">
         <p className="text-muted-foreground font-light flex flex-col md:flex-row gap-4 justify-center items-center">
           <a href="mailto:urbandos7@gmail.com" className="flex items-center gap-2 hover:text-primary transition">
@@ -187,7 +180,6 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
         </p>
       </div>
 
-      {/* Image Modal */}
       {previewImage && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
@@ -195,10 +187,17 @@ const CategoryPage = ({ cart, setCart }: { cart: any[], setCart: React.Dispatch<
         >
           <div className="relative max-w-4xl w-full px-4 flex justify-center">
             <div className="relative inline-block">
-              <img src={sizeImg} alt="Preview" className="max-h-[80vh] max-w-full mx-auto rounded-lg shadow-lg object-contain" />
+              <img
+                src={sizeImg}
+                alt="Preview"
+                className="max-h-[80vh] max-w-full mx-auto rounded-lg shadow-lg object-contain"
+              />
               <button
                 className="absolute top-2 right-2 bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition"
-                onClick={(e) => { e.stopPropagation(); setPreviewImage(null); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPreviewImage(null);
+                }}
               >
                 <X size={20} />
               </button>

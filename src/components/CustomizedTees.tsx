@@ -17,18 +17,83 @@ interface Tee {
   description: string;
   price: string;
   stock: { [key: string]: number };
+  instagramUrl?: string;
 }
+
 
 interface CustomizedTeesProps {
   cart: CartItem[];
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
 }
-
 const customizedTees: Tee[] = [
-  { id: 1, name: "Custom Design 1", image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg", description: "Personalized street design", price: "₹649", stock: { S: 3, M: 2, L: 1 } },
-  { id: 2, name: "Custom Design 2", image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg", description: "Urban art custom print", price: "₹699", stock: { S: 3, M: 2, L: 1 } },
-  { id: 3, name: "Custom Design 3", image: "https://i.postimg.cc/pTQzKg5b/image.png", description: "Minimalist custom design", price: "₹599", stock: { S: 3, M: 2, L: 1 } },
-  { id: 4, name: "Custom Design 4", image: "https://i.postimg.cc/Jh5zxmxq/image.png", description: "Bold graphic custom tee", price: "₹749", stock: { S: 3, M: 2, L: 1 } },
+  {
+    id: 1,
+    name: "Custom Design 1",
+    image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
+    description: "Personalized street design",
+    price: "₹649",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 2,
+    name: "Custom Design 2",
+    image: "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
+    description: "Urban art custom print",
+    price: "₹699",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 3,
+    name: "Custom Design 3",
+    image: "https://i.postimg.cc/pTQzKg5b/image.png",
+    description: "Minimalist custom design",
+    price: "₹599",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 4,
+    name: "Custom Design 4",
+    image: "https://i.postimg.cc/Jh5zxmxq/image.png",
+    description: "Bold graphic custom tee",
+    price: "₹749",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 5,
+    name: "Custom Design 5",
+    image: "https://i.postimg.cc/63VbTb9T/image.png",
+    description: "Bold graphic custom tee",
+    instagramUrl: "https://www.instagram.com/p/DOOhkCyjF3-/?img_index=1",
+    price: "₹799",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 6,
+    name: "Custom Design 6",
+    image: "https://i.postimg.cc/gkb3kyjL/image.png",
+    description: "Bold graphic custom tee",
+    instagramUrl: "https://www.instagram.com/p/DOf9MGiEXa_/?img_index=1",
+    price: "₹699",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 7,
+    name: "Custom Design 7",
+    image: "https://i.postimg.cc/qMmBZ0PB/image.png",
+    description: "Bold graphic custom tee",
+    instagramUrl: "https://www.instagram.com/p/DOtJVzuj0HG/?img_index=1",
+    price: "₹849",
+    stock: { S: 3, M: 2, L: 1 }
+  },
+  {
+    id: 8,
+    name: "Custom Design 8",
+    image: "https://i.postimg.cc/fLKkzdrm/image.png",
+    description: "Bold graphic custom tee",
+    instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_4",
+    price: "₹799",
+    stock: { S: 3, M: 2, L: 1 }
+  }
 ];
 
 const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
