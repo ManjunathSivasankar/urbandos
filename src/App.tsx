@@ -10,6 +10,7 @@ import CategoryPage from "./pages/CategoryPage";
 import CartPage from "./pages/CartPage";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
+import CustomizedTees from "./components/CustomizedTees"; // ✅ added import
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,12 @@ const App = () => {
 
             {/* Cart page */}
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
+
+            {/* Customized Tees page */}
+            <Route
+              path="/customized"
+              element={<CustomizedTees cart={cart} setCart={setCart} />}
+            />
 
             {/* 404 Not Found */}
             <Route path="*" element={<NotFound />} />

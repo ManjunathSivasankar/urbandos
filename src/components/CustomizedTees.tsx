@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface CartItem {
@@ -20,11 +20,11 @@ interface Tee {
   instagramUrl?: string;
 }
 
-
 interface CustomizedTeesProps {
   cart: CartItem[];
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
 }
+
 const customizedTees: Tee[] = [
   {
     id: 1,
@@ -99,11 +99,10 @@ const customizedTees: Tee[] = [
 const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
   const [openProduct, setOpenProduct] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
-  const [navigateData, setNavigateData] = useState<CartItem | null>(null); // temp holder for navigation
   const navigate = useNavigate();
 
   const handleSizeClick = (tee: Tee, size: string) => {
-    const cartItem: CartItem = {
+    let addedItem: CartItem = {
       id: tee.id,
       name: tee.name,
       size,
@@ -114,27 +113,22 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
 
     setCart(prev => {
       const index = prev.findIndex(item => item.id === tee.id && item.size === size);
-      let updated;
       if (index !== -1) {
-        updated = [...prev];
+        // Increment quantity
+        const updated = [...prev];
         updated[index].quantity += 1;
+        addedItem = updated[index]; // update reference for navigation
+        return updated;
       } else {
-        updated = [...prev, cartItem];
+        return [...prev, addedItem];
       }
-      return updated;
     });
 
-    setNavigateData(cartItem); // trigger navigation after cart is updated
     setOpenProduct(null);
-  };
 
-  // Effect to navigate once cart is updated
-  useEffect(() => {
-    if (navigateData) {
-      navigate("/cart", { state: { from: "/", item: navigateData } });
-      setNavigateData(null);
-    }
-  }, [navigateData, navigate]);
+    // Redirect to cart
+    navigate("/cart", { state: { from: "/", item: addedItem } });
+  };
 
   return (
     <section className="py-16 px-4 bg-background">
