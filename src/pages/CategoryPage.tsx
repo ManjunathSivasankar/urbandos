@@ -49,11 +49,21 @@ const categoryData = {
   },
 };
 
-const CategoryPage = ({ cart, setCart }: { cart: any[]; setCart: React.Dispatch<React.SetStateAction<any[]>> }) => {
+interface CartItem {
+  id: number;
+  color: string;
+  size: string;
+  price: string;
+  quantity: number;
+  image: string;
+}
+
+const CategoryPage = ({ cart, setCart }: { cart: CartItem[]; setCart: React.Dispatch<React.SetStateAction<CartItem[]>> }) => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [openProduct, setOpenProduct] = useState<number | null>(null);
+  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -85,15 +95,19 @@ const CategoryPage = ({ cart, setCart }: { cart: any[]; setCart: React.Dispatch<
       setCart([
         ...cart,
         {
-          ...product,
-          name: category.name,
+          id: product.id,
+          color: product.color,
+          image: product.image,
+          price: product.price,
           size,
           quantity: 1,
         },
       ]);
     }
 
-    navigate('/cart', { state: { from: `/category/${categoryId}` } });
+    // Open cart modal instead of navigating away
+    setShowCart(true);
+    setOpenProduct(null);
   };
 
   return (
@@ -169,16 +183,67 @@ const CategoryPage = ({ cart, setCart }: { cart: any[]; setCart: React.Dispatch<
         </div>
       </div>
 
-      <div className="border-t border-border pt-8 mt-12 pb-8 text-center">
-        <p className="text-muted-foreground font-light flex flex-col md:flex-row gap-4 justify-center items-center">
-          <a href="mailto:urbandos7@gmail.com" className="flex items-center gap-2 hover:text-primary transition">
-            <Mail size={16} /> <span className="text-foreground">urbandos7@gmail.com</span>
-          </a>
-          <a href="tel:+919345974814" className="flex items-center gap-2 hover:text-primary transition">
-            <Phone size={16} /> <span className="text-foreground">+91 9345974814</span>
-          </a>
-        </p>
-      </div>
+      {/* Cart Modal */}
+      {showCart && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Blur background */}
+          <div
+            className="absolute inset-0 backdrop-blur-sm bg-black/20"
+            onClick={() => setShowCart(false)}
+          ></div>
+
+          <div className="relative bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-auto p-6 z-50">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold">Your Cart</h2>
+              <button onClick={() => setShowCart(false)}>
+                <X size={24} />
+              </button>
+            </div>
+
+            {cart.length === 0 ? (
+              <p className="text-center text-gray-500 py-12">Your cart is empty.</p>
+            ) : (
+              <div className="space-y-4">
+                {cart.map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center p-4 border rounded-xl">
+                    <div className="flex items-center gap-4">
+                      <img src={item.image} alt={item.color} className="w-20 h-20 object-cover rounded-lg" />
+                      <div>
+                        <p className="font-semibold">{item.color}</p>
+                        <p>Size: {item.size}</p>
+                        <p>Quantity: {item.quantity}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-semibold">₹{Number(item.price.replace('₹',''))*item.quantity}</p>
+                      <button
+                        className="text-red-500 text-sm mt-1 hover:text-red-600"
+                        onClick={() => setCart(cart.filter((_, i) => i !== idx))}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {cart.length > 0 && (
+              <div className="mt-6 flex justify-between items-center">
+                <span className="text-xl font-bold">
+                  Total: ₹{cart.reduce((sum, item) => sum + Number(item.price.replace('₹',''))*item.quantity,0)}
+                </span>
+                <button
+                  onClick={() => alert('Implement payment here')}
+                  className="bg-primary text-white py-2 px-6 rounded-xl font-semibold hover:bg-primary/90 transition"
+                >
+                  Checkout
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {previewImage && (
         <div
