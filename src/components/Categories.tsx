@@ -3,13 +3,14 @@ import oversized from '@/assets/oversizedfront.png';
 import sweatshirt from '@/assets/sweatshirtfront.png';
 import comingsoon from '@/assets/comingsoon.png';
 import dropfront from '@/assets/drop.png';
+import regular from '@/assets/regular.jpg'
 
 const categories = [
   {
       id: 'regular-tshirts',
     name: 'Regular T-Shirts',
     description: 'Classic fit. Timeless design.',
-    image: comingsoon
+    image: regular
   },
   {
     id: 'oversized-tshirts',
