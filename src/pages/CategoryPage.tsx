@@ -6,43 +6,203 @@ import tshirtwhite from "@/assets/oversized/white.png";
 import tshirtaqua from "@/assets/oversized/Aqua.png";
 import tshirtmaroon from "@/assets/oversized/Dark Maroon.png";
 import tshirtred from "@/assets/oversized/red.png";
+
 import sweatblack from "@/assets/sweatshirts/black.png";
 import sweatwhite from "@/assets/sweatshirts/white.png";
 import sweatliteblue from "@/assets/sweatshirts/liteblue.png";
 import sweatbottelgreen from "@/assets/sweatshirts/Bottle Green.png";
+
 import dropwhite from "@/assets/dropshoulder/white.png";
 import dropblack from "@/assets/dropshoulder/black.png";
 import dropbeige from "@/assets/dropshoulder/Beige.png";
+
+import regularBlack from "@/assets/regular/black.jpg";
+import regularBlack1 from "@/assets/regular/black1.jpg";
+import regularBlack2 from "@/assets/regular/black2.jpg";
+
+import regularWhite from "@/assets/regular/white.jpg";
+import regularWhite1 from "@/assets/regular/white1.jpg";
+import regularWhite2 from "@/assets/regular/white2.jpg";
+
+import regularBlue from "@/assets/regular/blue.jpg";
+import regularBlue1 from "@/assets/regular/blue1.jpg";
+import regularBlue2 from "@/assets/regular/blue2.jpg";
+
+import regularYellow from "@/assets/regular/yellow.jpg";
+import regularYellow1 from "@/assets/regular/yellow1.jpg";
+import regularYellow2 from "@/assets/regular/yellow2.jpg";
+
+
+import regularRed from "@/assets/regular/red.jpg";
+import regularRed1 from "@/assets/regular/red1.jpg";
+import regularRed2 from "@/assets/regular/red2.jpg";
+
+import regularDarkGray from "@/assets/regular/darkgray.jpg";
+import regularDarkGray1 from "@/assets/regular/darkgray1.jpg";
+import regularDarkGray2 from "@/assets/regular/darkgray2.jpg";
+
+import regularGray from "@/assets/regular/gray.jpg";
+import regularGray1 from "@/assets/regular/gray1.jpg";
+import regularGray2 from "@/assets/regular/gray2.jpg";
+
+
 
 const categoryData = {
   "oversized-tshirts": {
     name: "Oversized T-Shirts",
     description: "Unisex !! 220Gsm Premium Cotton Oversized Tees",
     products: [
-      { id: 1, color: "Black", image: tshirtBlack, price: "₹349", stock: { M: 5, L: 2, XL: 0 } },
-      { id: 2, color: "White", image: tshirtwhite, price: "₹349", stock: { M: 3, L: 4, XL: 1 } },
-      { id: 3, color: "Aqua", image: tshirtaqua, price: "₹349", stock: { M: 2, L: 3, XL: 2 } },
-      { id: 4, color: "Dark Maroon", image: tshirtmaroon, price: "₹349", stock: { M: 1, L: 2, XL: 1 } },
-      { id: 5, color: "Red", image: tshirtred, price: "₹349", stock: { M: 4, L: 0, XL: 3 } },
+      {
+        id: 1,
+        color: "Black",
+        images: [tshirtBlack],
+        price: "₹349",
+        stock: { M: 5, L: 2, XL: 0 },
+      },
+      {
+        id: 2,
+        color: "White",
+        images: [tshirtwhite],
+        price: "₹349",
+        stock: { M: 3, L: 4, XL: 1 },
+      },
+      {
+        id: 3,
+        color: "Aqua",
+        images: [tshirtaqua],
+        price: "₹349",
+        stock: { M: 2, L: 3, XL: 2 },
+      },
+      {
+        id: 4,
+        color: "Dark Maroon",
+        images: [tshirtmaroon],
+        price: "₹349",
+        stock: { M: 1, L: 2, XL: 1 },
+      },
+      {
+        id: 5,
+        color: "Red",
+        images: [tshirtred],
+        price: "₹349",
+        stock: { M: 4, L: 0, XL: 3 },
+      },
     ],
   },
   sweatshirts: {
     name: "Sweatshirts",
     description: "Cotton Sweatshirt-Unisex!! 240Gsm French Terry",
     products: [
-      { id: 1, color: "Black", image: sweatblack, price: "₹459", stock: { M: 3, L: 2, XL: 1 } },
-      { id: 2, color: "White", image: sweatwhite, price: "₹459", stock: { M: 4, L: 3, XL: 2 } },
-      { id: 3, color: "Lite Blue", image: sweatliteblue, price: "₹459", stock: { M: 2, L: 1, XL: 3 } },
-      { id: 4, color: "Bottle Green", image: sweatbottelgreen, price: "₹459", stock: { M: 1, L: 2, XL: 2 } },
+      {
+        id: 1,
+        color: "Black",
+        images: [sweatblack],
+        price: "₹459",
+        stock: { M: 3, L: 2, XL: 1 },
+      },
+      {
+        id: 2,
+        color: "White",
+        images: [sweatwhite],
+        price: "₹459",
+        stock: { M: 4, L: 3, XL: 2 },
+      },
+      {
+        id: 3,
+        color: "Lite Blue",
+        images: [sweatliteblue],
+        price: "₹459",
+        stock: { M: 2, L: 1, XL: 3 },
+      },
+      {
+        id: 4,
+        color: "Bottle Green",
+        images: [sweatbottelgreen],
+        price: "₹459",
+        stock: { M: 1, L: 2, XL: 2 },
+      },
     ],
   },
   dropshoulder: {
     name: "Drop-Shoulder",
     description: "Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)",
     products: [
-      { id: 1, color: "Black", image: dropblack, price: "₹349", stock: { M: 2, L: 2, XL: 1 } },
-      { id: 2, color: "White", image: dropwhite, price: "₹349", stock: { M: 1, L: 3, XL: 2 } },
-      { id: 3, color: "Beige", image: dropbeige, price: "₹349", stock: { M: 0, L: 2, XL: 1 } },
+      {
+        id: 1,
+        color: "Black",
+        images: [dropblack],
+        price: "₹349",
+        stock: { M: 2, L: 2, XL: 1 },
+      },
+      {
+        id: 2,
+        color: "White",
+        images: [dropwhite],
+        price: "₹349",
+        stock: { M: 1, L: 3, XL: 2 },
+      },
+      {
+        id: 3,
+        color: "Beige",
+        images: [dropbeige],
+        price: "₹349",
+        stock: { M: 0, L: 2, XL: 1 },
+      },
+    ],
+  },
+  "regular-tshirts": {
+    name: "Regular Shirts",
+    description: "Premium Cotton Regular Fit Shirts - Unisex",
+    products: [
+      {
+        id: 1,
+        color: "Black",
+        images: [regularBlack, regularBlack1, regularBlack2], // 👈 multiple images
+        price: "₹399",
+        stock: { M: 3, L: 2, XL: 1 },
+      },
+      {
+        id: 2,
+        color: "White",
+        images: [regularWhite, regularWhite1, regularWhite2],
+        price: "₹399",
+        stock: { M: 4, L: 2, XL: 2 },
+      },
+      {
+        id: 3,
+        color: "Blue",
+        images: [regularBlue, regularBlue1, regularBlue2],
+        price: "₹399",
+        stock: { M: 2, L: 3, XL: 1 },
+      },
+      {
+        id: 4,
+        color: "Yellow",
+        images: [regularYellow, regularYellow1, regularYellow2],
+        price: "₹399",
+        stock: { M: 2, L: 3, XL: 1 },
+      },
+            {
+        id: 5,
+        color: "Red",
+        images: [regularRed, regularRed1, regularRed2],
+        price: "₹399",
+        stock: { M: 2, L: 3, XL: 1 },
+      },
+            {
+        id: 6,
+        color: "Dark Gray",
+        images: [regularDarkGray, regularDarkGray1, regularDarkGray2],
+        price: "₹399",
+        stock: { M: 2, L: 3, XL: 1 },
+      },
+            {
+        id: 7,
+        color: "Gray",
+        images: [regularGray, regularGray1, regularGray2],
+        price: "₹399",
+        stock: { M: 2, L: 3, XL: 1 },
+      },
     ],
   },
 };
@@ -70,6 +230,9 @@ const CategoryPage = ({
   const [openProduct, setOpenProduct] = useState<number | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
+
+  // gallery state
+  const [openGallery, setOpenGallery] = useState<{ productId: number; index: number } | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -102,9 +265,9 @@ const CategoryPage = ({
         ...cart,
         {
           id: product.id,
-          name: category.name, // ✅ now includes product category name
+          name: category.name,
           color: product.color,
-          image: product.image,
+          image: product.images[0],
           price: product.price,
           size: selectedSize,
           quantity: quantity,
@@ -115,8 +278,6 @@ const CategoryPage = ({
     setOpenProduct(null);
     setSelectedSize(null);
     setQuantity(1);
-
-    // ✅ Auto-open cart popup
     setShowCart(true);
   };
 
@@ -140,13 +301,24 @@ const CategoryPage = ({
               className="product-card group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-square overflow-hidden bg-secondary">
-                <img
-                  src={product.image}
-                  alt={`${category.name} in ${product.color}`}
-                  className="product-image"
-                />
-              </div>
+<div
+  className="aspect-square overflow-hidden bg-secondary cursor-pointer relative"
+  onClick={() => setOpenGallery({ productId: product.id, index: 0 })}
+>
+  <img
+    src={product.images[0]}
+    alt={`${category.name} in ${product.color}`}
+    className="product-image"
+  />
+
+  {/* +N badge */}
+  {product.images.length > 1 && (
+    <span className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+      +{product.images.length - 1}
+    </span>
+  )}
+</div>
+
               <div className="p-4">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-medium tracking-wide text-foreground">
@@ -228,6 +400,78 @@ const CategoryPage = ({
           ))}
         </div>
       </div>
+
+      {/* Gallery Modal */}
+{/* Gallery Modal */}
+{openGallery && (
+  <div
+    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+    onClick={() => setOpenGallery(null)}   // 👈 background click closes modal
+  >
+    <button
+      onClick={() => setOpenGallery(null)}
+      className="absolute top-6 right-6 text-white text-3xl"
+    >
+      ✕
+    </button>
+
+    <div
+      className="relative w-full max-w-2xl"
+      onClick={(e) => e.stopPropagation()} // 👈 prevent closing when clicking image
+    >
+      <img
+        src={
+          category.products.find((p) => p.id === openGallery.productId)?.images[
+            openGallery.index
+          ]
+        }
+        alt="Product"
+        className="w-full rounded-lg"
+      />
+
+      {/* Prev */}
+      <button
+        onClick={() =>
+          setOpenGallery((prev) =>
+            prev
+              ? {
+                  ...prev,
+                  index:
+                    (prev.index - 1 +
+                      (category.products.find((p) => p.id === prev.productId)?.images
+                        .length || 0)) %
+                    (category.products.find((p) => p.id === prev.productId)?.images.length || 0),
+                }
+              : prev
+          )
+        }
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white text-black px-3 py-1 rounded"
+      >
+        ‹
+      </button>
+
+      {/* Next */}
+      <button
+        onClick={() =>
+          setOpenGallery((prev) =>
+            prev
+              ? {
+                  ...prev,
+                  index:
+                    (prev.index + 1) %
+                    (category.products.find((p) => p.id === prev.productId)?.images.length || 0),
+                }
+              : prev
+          )
+        }
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white text-black px-3 py-1 rounded"
+      >
+        ›
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
