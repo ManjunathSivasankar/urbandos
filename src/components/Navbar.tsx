@@ -57,7 +57,7 @@ const Navbar = ({ cartItemCount = 0, setShowCart }: NavbarProps) => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            {["hero", "categories", "about", "contact"].map((section) => (
+            {["Home", "categories", "about", "contact"].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
