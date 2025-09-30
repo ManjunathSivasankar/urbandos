@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import tshirtBlack from "@/assets/oversized/black.png";
-import tshirtwhite from "@/assets/oversized/white.png";
-import tshirtaqua from "@/assets/oversized/Aqua.png";
-import tshirtmaroon from "@/assets/oversized/Dark Maroon.png";
-import tshirtred from "@/assets/oversized/red.png";
 
 import sweatblack from "@/assets/sweatshirts/black.png";
 import sweatwhite from "@/assets/sweatshirts/white.png";
@@ -32,7 +28,6 @@ import regularYellow from "@/assets/regular/yellow.jpg";
 import regularYellow1 from "@/assets/regular/yellow1.jpg";
 import regularYellow2 from "@/assets/regular/yellow2.jpg";
 
-
 import regularRed from "@/assets/regular/red.jpg";
 import regularRed1 from "@/assets/regular/red1.jpg";
 import regularRed2 from "@/assets/regular/red2.jpg";
@@ -45,8 +40,7 @@ import regularGray from "@/assets/regular/gray.jpg";
 import regularGray1 from "@/assets/regular/gray1.jpg";
 import regularGray2 from "@/assets/regular/gray2.jpg";
 
-
-
+// ✅ Category & Products Data
 const categoryData = {
   "oversized-tshirts": {
     name: "Oversized T-Shirts",
@@ -56,11 +50,17 @@ const categoryData = {
         id: 1,
         color: "Black",
         images: [tshirtBlack],
-        price: "₹349",
-        stock: { M: 5, L: 2, XL: 0 },
+        stock: {
+          S: { qty: 5, price: "₹349" },
+          M: { qty: 5, price: "₹349" },
+          L: { qty: 2, price: "₹349" },
+          XL: { qty: 0, price: "₹399" },
+          XXL: { qty: 3, price: "₹399" },
+        },
       },
     ],
   },
+
   sweatshirts: {
     name: "Sweatshirts",
     description: "Cotton Sweatshirt-Unisex!! 240Gsm French Terry",
@@ -69,32 +69,53 @@ const categoryData = {
         id: 1,
         color: "Black",
         images: [sweatblack],
-        price: "₹459",
-        stock: { M: 3, L: 2, XL: 1 },
+        stock: {
+          S: { qty: 3, price: "₹459" },
+          M: { qty: 3, price: "₹459" },
+          L: { qty: 2, price: "₹459" },
+          XL: { qty: 1, price: "₹499" },
+          XXL: { qty: 1, price: "₹499" },
+        },
       },
       {
         id: 2,
         color: "White",
         images: [sweatwhite],
-        price: "₹459",
-        stock: { M: 4, L: 3, XL: 2 },
+        stock: {
+          S: { qty: 4, price: "₹459" },
+          M: { qty: 3, price: "₹459" },
+          L: { qty: 3, price: "₹459" },
+          XL: { qty: 2, price: "₹499" },
+          XXL: { qty: 1, price: "₹499" },
+        },
       },
       {
         id: 3,
         color: "Lite Blue",
         images: [sweatliteblue],
-        price: "₹459",
-        stock: { M: 2, L: 1, XL: 3 },
+        stock: {
+          S: { qty: 2, price: "₹459" },
+          M: { qty: 2, price: "₹459" },
+          L: { qty: 2, price: "₹459" },
+          XL: { qty: 1, price: "₹499" },
+          XXL: { qty: 1, price: "₹499" },
+        },
       },
       {
         id: 4,
         color: "Bottle Green",
         images: [sweatbottelgreen],
-        price: "₹459",
-        stock: { M: 1, L: 2, XL: 2 },
+        stock: {
+          S: { qty: 1, price: "₹459" },
+          M: { qty: 2, price: "₹459" },
+          L: { qty: 2, price: "₹459" },
+          XL: { qty: 1, price: "₹499" },
+          XXL: { qty: 1, price: "₹499" },
+        },
       },
     ],
   },
+
   dropshoulder: {
     name: "Drop-Shoulder",
     description: "Cotton Drop-shoulder - Unisex !! 210Gsm (Single jersey Cotton)",
@@ -103,80 +124,131 @@ const categoryData = {
         id: 1,
         color: "Black",
         images: [dropblack],
-        price: "₹349",
-        stock: { M: 2, L: 2, XL: 1 },
+        stock: {
+          S: { qty: 2, price: "₹349" },
+          M: { qty: 2, price: "₹349" },
+          L: { qty: 2, price: "₹349" },
+          XL: { qty: 1, price: "₹399" },
+          XXL: { qty: 1, price: "₹399" },
+        },
       },
       {
         id: 2,
         color: "White",
         images: [dropwhite],
-        price: "₹349",
-        stock: { M: 1, L: 3, XL: 2 },
+        stock: {
+          S: { qty: 1, price: "₹349" },
+          M: { qty: 3, price: "₹349" },
+          L: { qty: 3, price: "₹349" },
+          XL: { qty: 2, price: "₹399" },
+          XXL: { qty: 1, price: "₹399" },
+        },
       },
       {
         id: 3,
         color: "Beige",
         images: [dropbeige],
-        price: "₹349",
-        stock: { M: 0, L: 2, XL: 1 },
+        stock: {
+          S: { qty: 0, price: "₹349" },
+          M: { qty: 2, price: "₹349" },
+          L: { qty: 2, price: "₹349" },
+          XL: { qty: 1, price: "₹399" },
+          XXL: { qty: 1, price: "₹399" },
+        },
       },
     ],
   },
-  "regular-tshirts": {
-    name: "Regular Shirts",
-    description: "Premium Cotton Regular Fit Shirts - Unisex",
-    products: [
-      {
-        id: 1,
-        color: "Black",
-        images: [regularBlack, regularBlack1, regularBlack2], // 👈 multiple images
-        price: "₹399",
-        stock: { M: 3, L: 2, XL: 1 },
+
+"regular-tshirts": {
+  name: "Regular Shirts",
+  description: "180 Gsm Regular Half Sleeve (Single Jersey Cotton)",
+  products: [
+    {
+      id: 1,
+      color: "Black",
+      images: [regularBlack, regularBlack1, regularBlack2],
+      stock: {
+        S: { qty: 3, price: "₹279" },
+        M: { qty: 3, price: "₹279" },
+        L: { qty: 2, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-      {
-        id: 2,
-        color: "White",
-        images: [regularWhite, regularWhite1, regularWhite2],
-        price: "₹399",
-        stock: { M: 4, L: 2, XL: 2 },
+    },
+    {
+      id: 2,
+      color: "White",
+      images: [regularWhite, regularWhite1, regularWhite2],
+      stock: {
+        S: { qty: 4, price: "₹279" },
+        M: { qty: 3, price: "₹279" },
+        L: { qty: 2, price: "₹279" },
+        XL: { qty: 2, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-      {
-        id: 3,
-        color: "Blue",
-        images: [regularBlue, regularBlue1, regularBlue2],
-        price: "₹399",
-        stock: { M: 2, L: 3, XL: 1 },
+    },
+    {
+      id: 3,
+      color: "Blue",
+      images: [regularBlue, regularBlue1, regularBlue2],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-      {
-        id: 4,
-        color: "Yellow",
-        images: [regularYellow, regularYellow1, regularYellow2],
-        price: "₹399",
-        stock: { M: 2, L: 3, XL: 1 },
+    },
+    {
+      id: 4,
+      color: "Yellow",
+      images: [regularYellow, regularYellow1, regularYellow2],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-            {
-        id: 5,
-        color: "Red",
-        images: [regularRed, regularRed1, regularRed2],
-        price: "₹399",
-        stock: { M: 2, L: 3, XL: 1 },
+    },
+    {
+      id: 5,
+      color: "Red",
+      images: [regularRed, regularRed1, regularRed2],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-            {
-        id: 6,
-        color: "Dark Gray",
-        images: [regularDarkGray, regularDarkGray1, regularDarkGray2],
-        price: "₹399",
-        stock: { M: 2, L: 3, XL: 1 },
+    },
+    {
+      id: 6,
+      color: "Dark Gray",
+      images: [regularDarkGray, regularDarkGray1, regularDarkGray2],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-            {
-        id: 7,
-        color: "Gray",
-        images: [regularGray, regularGray1, regularGray2],
-        price: "₹399",
-        stock: { M: 2, L: 3, XL: 1 },
+    },
+    {
+      id: 7,
+      color: "Gray",
+      images: [regularGray, regularGray1, regularGray2],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
       },
-    ],
-  },
+    },
+  ],
+ },
 };
 
 interface CartItem {
@@ -202,8 +274,6 @@ const CategoryPage = ({
   const [openProduct, setOpenProduct] = useState<number | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
-
-  // gallery state
   const [openGallery, setOpenGallery] = useState<{ productId: number; index: number } | null>(null);
 
   useEffect(() => {
@@ -214,15 +284,18 @@ const CategoryPage = ({
   if (!category) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Category not found</h1>
-        </div>
+        <h1 className="text-2xl font-bold">Category not found</h1>
       </div>
     );
   }
 
   const handleAddToCart = (product: any) => {
     if (!selectedSize) return alert("Please select a size first!");
+    const selectedStock = product.stock[selectedSize];
+
+    if (!selectedStock || selectedStock.qty === 0) {
+      return alert("This size is out of stock!");
+    }
 
     const existingIndex = cart.findIndex(
       (item) => item.id === product.id && item.size === selectedSize
@@ -240,9 +313,9 @@ const CategoryPage = ({
           name: category.name,
           color: product.color,
           image: product.images[0],
-          price: product.price,
+          price: selectedStock.price,
           size: selectedSize,
-          quantity: quantity,
+          quantity,
         },
       ]);
     }
@@ -254,107 +327,112 @@ const CategoryPage = ({
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-8">
-        <div className="text-center mb-12 fade-in">
-          <h1 className="text-4xl md:text-5xl font-thin tracking-widest text-foreground mb-4">
+    <div className="min-h-screen bg-background pt-20">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-thin tracking-widest text-foreground mb-2 sm:mb-4">
             {category.name.toUpperCase()}
           </h1>
-          <p className="text-lg text-muted-foreground font-light tracking-wide">
-            {category.description}
-          </p>
+          <p className="text-sm sm:text-lg text-muted-foreground">{category.description}</p>
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {category.products.map((product, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 items-start">
+          {category.products.map((product) => (
             <div
               key={product.id}
-              className="product-card group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition ${
+                openProduct === product.id ? "h-auto" : "h-fit"
+              }`}
             >
-<div
-  className="aspect-square overflow-hidden bg-secondary cursor-pointer relative"
-  onClick={() => setOpenGallery({ productId: product.id, index: 0 })}
->
-  <img
-    src={product.images[0]}
-    alt={`${category.name} in ${product.color}`}
-    className="product-image"
-  />
+              {/* Image */}
+              <div
+                className="aspect-square overflow-hidden bg-secondary cursor-pointer relative"
+                onClick={() => setOpenGallery({ productId: product.id, index: 0 })}
+              >
+                <img
+                  src={product.images[0]}
+                  alt={product.color}
+                  className="w-full h-full object-cover"
+                />
+                {product.images.length > 1 && (
+                  <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                    +{product.images.length - 1}
+                  </span>
+                )}
+              </div>
 
-  {/* +N badge */}
-  {product.images.length > 1 && (
-    <span className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
-      +{product.images.length - 1}
-    </span>
-  )}
-</div>
-
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-medium tracking-wide text-foreground">
-                    {product.color}
-                  </h3>
-                  <span className="text-lg font-medium text-foreground">{product.price}</span>
+              {/* Details */}
+              <div className="flex flex-col justify-between flex-1 p-3 sm:p-4">
+                <div className="flex justify-between items-center mb-2 sm:mb-4">
+                  <h3 className="text-base sm:text-lg font-medium truncate">{product.color}</h3>
+                  <span className="text-sm sm:text-lg font-semibold text-foreground">
+                    From{" "}
+                    {Object.values(product.stock).reduce((min, s) =>
+                      Number(s.price.replace("₹", "")) < Number(min.price.replace("₹", ""))
+                        ? s
+                        : min
+                    ).price}
+                  </span>
                 </div>
 
-                {/* Open product → size + qty + add to cart */}
                 {openProduct === product.id ? (
-                  <div className="space-y-4">
-                    <p className="text-sm text-muted-foreground">Select Size:</p>
+                  <div className="space-y-3 sm:space-y-4">
+                    {/* Sizes */}
+                    <p className="text-xs sm:text-sm text-muted-foreground">Select Size:</p>
                     <div className="flex flex-wrap gap-2">
-                      {Object.entries(product.stock).map(([size, qty]) => (
+                      {Object.entries(product.stock).map(([size, data]) => (
                         <button
                           key={size}
-                          disabled={qty === 0}
+                          disabled={data.qty === 0}
                           onClick={() => setSelectedSize(size)}
-                          className={`py-2 px-4 rounded-full text-sm font-semibold transition-all border ${
+                          className={`py-1.5 px-3 rounded-full text-xs sm:text-sm font-medium border ${
                             selectedSize === size
                               ? "bg-primary text-white border-primary"
-                              : qty === 0
-                              ? "bg-gray-200 text-gray-400 border-gray-200 cursor-not-allowed"
+                              : data.qty === 0
+                              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                               : "bg-white text-foreground border-gray-300 hover:bg-primary hover:text-white"
                           }`}
                         >
-                          {size} ({qty})
+                          {size} ({data.qty}) – {data.price}
                         </button>
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <span className="text-sm text-muted-foreground">Quantity:</span>
+                    {/* Quantity */}
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs sm:text-sm text-muted-foreground">Qty:</span>
                       <div className="flex items-center border rounded-lg">
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="px-3 py-1 bg-gray-200 hover:bg-gray-300"
+                          className="px-2 sm:px-3 py-1 bg-gray-200 hover:bg-gray-300"
                         >
                           -
                         </button>
-                        <span className="px-4">{quantity}</span>
+                        <span className="px-3 sm:px-4">{quantity}</span>
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="px-3 py-1 bg-gray-200 hover:bg-gray-300"
+                          className="px-2 sm:px-3 py-1 bg-gray-200 hover:bg-gray-300"
                         >
                           +
                         </button>
                       </div>
                     </div>
 
+                    {/* Actions */}
                     <button
                       onClick={() => handleAddToCart(product)}
-                      className="w-full py-2 px-4 rounded-md bg-green-500 text-white font-semibold hover:bg-green-600 transition"
+                      className="w-full py-2 rounded-md bg-green-500 text-white text-sm sm:text-base font-semibold hover:bg-green-600 transition"
                     >
                       Add to Cart
                     </button>
-
                     <button
                       onClick={() => {
                         setOpenProduct(null);
                         setSelectedSize(null);
                         setQuantity(1);
                       }}
-                      className="w-full py-2 px-4 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
+                      className="w-full py-2 rounded-md border border-gray-300 text-gray-600 text-sm sm:text-base hover:bg-gray-100 transition"
                     >
                       Cancel
                     </button>
@@ -362,7 +440,7 @@ const CategoryPage = ({
                 ) : (
                   <button
                     onClick={() => setOpenProduct(product.id)}
-                    className="w-full py-2 px-4 rounded-md bg-primary text-white font-semibold hover:bg-primary/90 transition"
+                    className="w-full py-2 rounded-md bg-primary text-white text-sm sm:text-base font-semibold hover:bg-primary/90 transition"
                   >
                     Order Now
                   </button>
@@ -374,76 +452,73 @@ const CategoryPage = ({
       </div>
 
       {/* Gallery Modal */}
-{/* Gallery Modal */}
-{openGallery && (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-    onClick={() => setOpenGallery(null)}   // 👈 background click closes modal
-  >
-    <button
-      onClick={() => setOpenGallery(null)}
-      className="absolute top-6 right-6 text-white text-3xl"
-    >
-      ✕
-    </button>
-
-    <div
-      className="relative w-full max-w-2xl"
-      onClick={(e) => e.stopPropagation()} // 👈 prevent closing when clicking image
-    >
-      <img
-        src={
-          category.products.find((p) => p.id === openGallery.productId)?.images[
-            openGallery.index
-          ]
-        }
-        alt="Product"
-        className="w-full rounded-lg"
-      />
-
-      {/* Prev */}
-      <button
-        onClick={() =>
-          setOpenGallery((prev) =>
-            prev
-              ? {
-                  ...prev,
-                  index:
-                    (prev.index - 1 +
-                      (category.products.find((p) => p.id === prev.productId)?.images
-                        .length || 0)) %
-                    (category.products.find((p) => p.id === prev.productId)?.images.length || 0),
-                }
-              : prev
-          )
-        }
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white text-black px-3 py-1 rounded"
-      >
-        ‹
-      </button>
-
-      {/* Next */}
-      <button
-        onClick={() =>
-          setOpenGallery((prev) =>
-            prev
-              ? {
-                  ...prev,
-                  index:
-                    (prev.index + 1) %
-                    (category.products.find((p) => p.id === prev.productId)?.images.length || 0),
-                }
-              : prev
-          )
-        }
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white text-black px-3 py-1 rounded"
-      >
-        ›
-      </button>
-    </div>
-  </div>
-)}
-
+      {openGallery && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4"
+          onClick={() => setOpenGallery(null)}
+        >
+          <button
+            onClick={() => setOpenGallery(null)}
+            className="absolute top-4 right-4 text-white text-3xl"
+          >
+            ✕
+          </button>
+          <div
+            className="relative w-full max-w-md sm:max-w-lg md:max-w-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={
+                category.products.find((p) => p.id === openGallery.productId)?.images[
+                  openGallery.index
+                ]
+              }
+              alt="Product"
+              className="w-full max-h-[80vh] object-contain rounded-lg"
+            />
+            {/* Prev */}
+            <button
+              onClick={() =>
+                setOpenGallery((prev) =>
+                  prev
+                    ? {
+                        ...prev,
+                        index:
+                          (prev.index - 1 +
+                            (category.products.find((p) => p.id === prev.productId)?.images
+                              .length || 0)) %
+                          (category.products.find((p) => p.id === prev.productId)?.images.length ||
+                            0),
+                      }
+                    : prev
+                )
+              }
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white text-black px-2 sm:px-3 py-1 rounded"
+            >
+              ‹
+            </button>
+            {/* Next */}
+            <button
+              onClick={() =>
+                setOpenGallery((prev) =>
+                  prev
+                    ? {
+                        ...prev,
+                        index:
+                          (prev.index + 1) %
+                          (category.products.find((p) => p.id === prev.productId)?.images.length ||
+                            0),
+                      }
+                    : prev
+                )
+              }
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black px-2 sm:px-3 py-1 rounded"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
