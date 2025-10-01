@@ -4,6 +4,7 @@ import sweatshirt from '@/assets/sweatshirtfront.png';
 import comingsoon from '@/assets/comingsoon.png';
 import dropfront from '@/assets/drop.png';
 import regular from '@/assets/regular.jpg'
+import hoodie from '@/assets/hoodiecover.webp';
 
 const categories = [
   {
@@ -16,25 +17,25 @@ const categories = [
     id: 'oversized-tshirts',
     name: 'Oversized T-Shirts',
     description: 'Relaxed fit. Bold statement.',
-    image: oversized
+    image: comingsoon 
   },
     {
     id: 'Polo-Shirts',
     name: 'Polo T-shirts',
     description: 'Relaxed fit. Bold statement.',
-    image: oversized
+    image: comingsoon
   },
   {
     id: 'sweatshirts',
     name: 'Sweatshirts',
     description: 'Comfort meets style.',
-    image: sweatshirt
+    image: comingsoon
   },
   {
     id: 'hoodies',
     name: 'Hoodies',
     description: 'Urban essential.',
-    image: comingsoon
+    image: hoodie
   },
     {
     id: 'acid-wash',
