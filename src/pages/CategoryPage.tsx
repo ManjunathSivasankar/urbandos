@@ -40,6 +40,27 @@ import regularGray from "@/assets/regular/gray.jpg";
 import regularGray1 from "@/assets/regular/gray1.jpg";
 import regularGray2 from "@/assets/regular/gray2.jpg";
 
+import black from "@/assets/hoodies/black.jpg";
+import black1 from "@/assets/hoodies/black1.jpg";
+import black2 from "@/assets/hoodies/black2.jpg";
+import black3 from "@/assets/hoodies/black3.jpg";
+
+import white from "@/assets/hoodies/white.jpg";
+import white1 from "@/assets/hoodies/white1.jpg";
+import white2 from "@/assets/hoodies/white2.jpg";
+import white3 from "@/assets/hoodies/white3.jpg";
+
+import cream from "@/assets/hoodies/cream.jpg";
+import cream1 from "@/assets/hoodies/cream1.jpg";
+import cream2 from "@/assets/hoodies/cream2.jpg";
+import cream3 from "@/assets/hoodies/cream3.jpg";
+
+import purple from "@/assets/hoodies/purple.jpg";
+import purple1 from "@/assets/hoodies/purple1.jpg";
+import purple2 from "@/assets/hoodies/purple2.jpg";
+import purple3 from "@/assets/hoodies/purple3.jpg";
+
+
 // ✅ Category & Products Data
 const categoryData = {
   "oversized-tshirts": {
@@ -239,6 +260,61 @@ const categoryData = {
       id: 7,
       color: "Gray",
       images: [regularGray, regularGray1, regularGray2],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
+      },
+    },
+  ],
+ },
+
+ hoodies: {
+  name: "Hoodies",
+  description: "Hoodies Description",
+  products: [
+    {
+      id: 1,
+      color: "Black",
+      images: [black, black1, black2, black3],
+      stock: {
+        S: { qty: 3, price: "₹279" },
+        M: { qty: 3, price: "₹279" },
+        L: { qty: 2, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
+      },
+    },
+    {
+      id: 2,
+      color: "White",
+      images: [white, white1, white2, white3],
+      stock: {
+        S: { qty: 4, price: "₹279" },
+        M: { qty: 3, price: "₹279" },
+        L: { qty: 2, price: "₹279" },
+        XL: { qty: 2, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
+      },
+    },
+    {
+      id: 3,
+      color: "Cream",
+      images: [cream, cream1, cream2, cream3],
+      stock: {
+        S: { qty: 2, price: "₹279" },
+        M: { qty: 2, price: "₹279" },
+        L: { qty: 3, price: "₹279" },
+        XL: { qty: 1, price: "₹299" },
+        XXL: { qty: 1, price: "₹299" },
+      },
+    },
+    {
+      id: 4,
+      color: "Purple",
+      images: [purple, purple1, purple2, purple3],
       stock: {
         S: { qty: 2, price: "₹279" },
         M: { qty: 2, price: "₹279" },
