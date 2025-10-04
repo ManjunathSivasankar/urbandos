@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 interface CartItem {
@@ -17,6 +18,10 @@ interface CartPageProps {
 }
 
 const CartPage = ({ cart, setCart, setShowCart }: CartPageProps) => {
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerPlace, setCustomerPlace] = useState("");
+
   const updateQuantity = (index: number, delta: number) => {
     setCart((prev) =>
       prev.map((item, i) =>
@@ -31,7 +36,13 @@ const CartPage = ({ cart, setCart, setShowCart }: CartPageProps) => {
   );
 
   const handleConfirmOrder = () => {
-    const phone = "919003789388"; // your WhatsApp number
+    if (!customerName || !customerPhone || !customerPlace) {
+      alert("Please fill in your Name, Phone Number, and Place before confirming.");
+      return;
+    }
+
+    const phone = "919003789388"; // ✅ your WhatsApp number
+
     const orderDetails = cart
       .map(
         (item) =>
@@ -41,8 +52,28 @@ const CartPage = ({ cart, setCart, setShowCart }: CartPageProps) => {
       )
       .join("\n");
 
-    const message = `📦 New Order Received!\n\n${orderDetails}\n\nTotal: ₹${total}`;
+    const message = `
+📦 *New Order Received!*
+
+👤 *Customer Details*
+Name: ${customerName}
+Phone: ${customerPhone}
+Place: ${customerPlace}
+
+🧾 *Order Details*
+${orderDetails}
+
+💰 *Total:* ₹${total}
+    `;
+
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+
+    // Optional: clear cart & fields
+    setCart([]);
+    setCustomerName("");
+    setCustomerPhone("");
+    setCustomerPlace("");
+    setShowCart(false);
   };
 
   return (
@@ -132,16 +163,44 @@ const CartPage = ({ cart, setCart, setShowCart }: CartPageProps) => {
           )}
         </div>
 
-        {/* Footer */}
+        {/* Footer with User Details + Confirm */}
         {cart.length > 0 && (
-          <div className="border-t p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="text-xl font-bold">Total: ₹{total}</span>
-            <button
-              className="w-full md:w-auto bg-green-500 text-white py-3 px-6 rounded-xl font-semibold hover:bg-green-600 transition"
-              onClick={handleConfirmOrder}
-            >
-              Confirm Order
-            </button>
+          <div className="border-t p-6 flex flex-col gap-4">
+            {/* Customer Details Form */}
+            <div className="flex flex-col gap-3">
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                className="border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <input
+                type="tel"
+                placeholder="Your Phone Number"
+                value={customerPhone}
+                onChange={(e) => setCustomerPhone(e.target.value)}
+                className="border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <input
+                type="text"
+                placeholder="Your Place (City / Area)"
+                value={customerPlace}
+                onChange={(e) => setCustomerPlace(e.target.value)}
+                className="border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+
+            {/* Total + Confirm Button */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
+              <span className="text-xl font-bold">Total: ₹{total}</span>
+              <button
+                className="w-full md:w-auto bg-green-500 text-white py-3 px-6 rounded-xl font-semibold hover:bg-green-600 transition"
+                onClick={handleConfirmOrder}
+              >
+                Confirm Order via WhatsApp
+              </button>
+            </div>
           </div>
         )}
       </div>
