@@ -16,7 +16,7 @@ app.post("/order", async (req, res) => {
   try {
     await client.messages.create({
       from: "whatsapp:+14155238886", // Twilio WhatsApp sandbox number
-      to: "whatsapp:+919345974814", // Owner's WhatsApp number
+      to: "whatsapp:+919003789388", // Owner's WhatsApp number
       body: `New order received! Order ID: ${orderId}, Total: ₹${total}`,
     });
 

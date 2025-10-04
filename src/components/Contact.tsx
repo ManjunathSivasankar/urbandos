@@ -162,7 +162,7 @@ const Contact = () => {
         {/* Footer / Contact Info */}
         <div className="border-t border-gray-200 pt-6 text-gray-600 text-sm">
           Email: <span className="text-gray-900">urbandos7@gmail.com</span> | Phone:{" "}
-          <span className="text-gray-900">+91 9345974814</span>
+          <span className="text-gray-900">+91 9003789388</span>
         </div>
       </div>
     </section>

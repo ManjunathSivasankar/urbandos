@@ -31,7 +31,7 @@ const CartPage = ({ cart, setCart, setShowCart }: CartPageProps) => {
   );
 
   const handleConfirmOrder = () => {
-    const phone = "919345974814"; // your WhatsApp number
+    const phone = "919003789388"; // your WhatsApp number
     const orderDetails = cart
       .map(
         (item) =>
