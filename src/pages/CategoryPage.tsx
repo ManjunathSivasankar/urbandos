@@ -95,10 +95,10 @@ import lavenders3 from "@/assets/sweatshirts/lavender3.png";
 
 // ✅ Category & Products Data
 const categoryData = {
-  "oversized-tshirts": {
+  /*"oversized-tshirts": {
     name: "Oversized T-Shirts",
     description: "Unisex !! 220Gsm Premium Cotton Oversized Tees",
-    products: [
+    /*products: [
       {
         id: 1,
         color: "Black",
@@ -112,7 +112,7 @@ const categoryData = {
         },
       },
     ],
-  },
+  },*/
 
   sweatshirts: {
     name: "Sweatshirts",
