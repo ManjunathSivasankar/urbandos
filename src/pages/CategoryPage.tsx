@@ -222,7 +222,7 @@ const categoryData = {
     },
     {
       id: 4,
-      color: "Yellow",
+      color: "Beige",
       images: [regularYellow, regularYellow1, regularYellow2],
       stock: {
         S: { qty: 2, price: "₹279" },
@@ -234,7 +234,7 @@ const categoryData = {
     },
     {
       id: 5,
-      color: "Red",
+      color: "Rust",
       images: [regularRed, regularRed1, regularRed2],
       stock: {
         S: { qty: 2, price: "₹279" },
@@ -246,7 +246,7 @@ const categoryData = {
     },
     {
       id: 6,
-      color: "Dark Gray",
+      color: "Olive",
       images: [regularDarkGray, regularDarkGray1, regularDarkGray2],
       stock: {
         S: { qty: 2, price: "₹279" },
@@ -258,7 +258,7 @@ const categoryData = {
     },
     {
       id: 7,
-      color: "Gray",
+      color: "Ash",
       images: [regularGray, regularGray1, regularGray2],
       stock: {
         S: { qty: 2, price: "₹279" },
@@ -283,8 +283,8 @@ const categoryData = {
         S: { qty: 3, price: "₹559" },
         M: { qty: 3, price: "₹559" },
         L: { qty: 2, price: "₹559" },
-        XL: { qty: 1, price: "₹559" },
-        XXL: { qty: 1, price: "₹559" },
+        XL: { qty: 1, price: "₹569" },
+        XXL: { qty: 1, price: "₹569" },
       },
     },
     {
@@ -295,32 +295,32 @@ const categoryData = {
         S: { qty: 4, price: "₹559" },
         M: { qty: 3, price: "₹559" },
         L: { qty: 2, price: "₹559" },
-        XL: { qty: 2, price: "₹559" },
-        XXL: { qty: 1, price: "₹559" },
+        XL: { qty: 1, price: "₹569" },
+        XXL: { qty: 1, price: "₹569" },
       },
     },
     {
       id: 3,
-      color: "Cream",
+      color: "Beige",
       images: [cream, cream1, cream2, cream3],
       stock: {
         S: { qty: 2, price: "₹559" },
         M: { qty: 2, price: "₹559" },
         L: { qty: 3, price: "₹559" },
-        XL: { qty: 1, price: "₹559" },
-        XXL: { qty: 1, price: "₹559" },
+        XL: { qty: 1, price: "₹569" },
+        XXL: { qty: 1, price: "₹569" },
       },
     },
     {
       id: 4,
-      color: "Purple",
+      color: "Lavender",
       images: [purple, purple1, purple2, purple3],
       stock: {
         S: { qty: 2, price: "₹559" },
         M: { qty: 2, price: "₹559" },
         L: { qty: 3, price: "₹559" },
-        XL: { qty: 1, price: "₹559" },
-        XXL: { qty: 1, price: "₹559" },
+        XL: { qty: 1, price: "₹569" },
+        XXL: { qty: 1, price: "₹569" },
       },
     },
   ],
