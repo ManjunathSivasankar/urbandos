@@ -5,6 +5,9 @@ import comingsoon from '@/assets/comingsoon.png';
 import dropfront from '@/assets/drop.png';
 import regular from '@/assets/regular.jpg'
 import hoodie from '@/assets/hoodiecover.webp';
+import polo from '@/assets/polo.jpg';
+import sweat from '@/assets/sweat.webp';
+
 
 const categories = [
   {
@@ -23,13 +26,13 @@ const categories = [
     id: 'Polo-Shirts',
     name: 'Polo T-shirts',
     description: 'Relaxed fit. Bold statement.',
-    image: comingsoon
+    image: polo
   },
   {
     id: 'sweatshirts',
     name: 'Sweatshirts',
     description: 'Comfort meets style.',
-    image: comingsoon
+    image: sweat
   },
   {
     id: 'hoodies',
