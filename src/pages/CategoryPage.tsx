@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import tshirtBlack from "@/assets/oversized/black.png";
 
 import sweatblack from "@/assets/sweatshirts/black.png";
-import sweatwhite from "@/assets/sweatshirts/white.png";
 import sweatliteblue from "@/assets/sweatshirts/liteblue.png";
 import sweatbottelgreen from "@/assets/sweatshirts/Bottle Green.png";
 
@@ -61,6 +60,39 @@ import purple2 from "@/assets/hoodies/purple2.jpg";
 import purple3 from "@/assets/hoodies/purple3.jpg";
 
 
+import blackp from "@/assets/poloshirts/black.png";
+import whitep from "@/assets/poloshirts/white.png";
+import redp from "@/assets/poloshirts/red.png";
+import beigep from "@/assets/poloshirts/beige.png";
+import punchpinkp from "@/assets/poloshirts/punchpink.png";
+
+import whites from "@/assets/sweatshirts/white.png";
+import whites1 from "@/assets/sweatshirts/white1.png";
+import whites2 from "@/assets/sweatshirts/white2.png";
+import whites3 from "@/assets/sweatshirts/white3.png";
+import whites4 from "@/assets/sweatshirts/white4.png";
+
+
+import blues from "@/assets/sweatshirts/blue.png";
+import blues1 from "@/assets/sweatshirts/blue1.png";
+import blues2 from "@/assets/sweatshirts/blue2.png";
+
+import green from "@/assets/sweatshirts/green.png";
+import green1 from "@/assets/sweatshirts/green1.png";
+import green2 from "@/assets/sweatshirts/green2.png";
+import green3 from "@/assets/sweatshirts/green3.png";
+import green4 from "@/assets/sweatshirts/green4.png";
+
+import blacks from "@/assets/sweatshirts/black.png";
+import blacks1 from "@/assets/sweatshirts/black1.png";
+import blacks2 from "@/assets/sweatshirts/black2.png";
+
+import lavenders from "@/assets/sweatshirts/lavender.png";
+import lavenders1 from "@/assets/sweatshirts/lavender1.png";
+import lavenders2 from "@/assets/sweatshirts/lavender2.png";
+import lavenders3 from "@/assets/sweatshirts/lavender3.png";
+
+
 // ✅ Category & Products Data
 const categoryData = {
   "oversized-tshirts": {
@@ -89,49 +121,56 @@ const categoryData = {
       {
         id: 1,
         color: "Black",
-        images: [sweatblack],
+        images: [blacks, blacks1, blacks2],
         stock: {
-          S: { qty: 3, price: "₹459" },
-          M: { qty: 3, price: "₹459" },
-          L: { qty: 2, price: "₹459" },
-          XL: { qty: 1, price: "₹499" },
-          XXL: { qty: 1, price: "₹499" },
+          S: { qty: 4, price: "₹449" },
+          M: { qty: 3, price: "₹449" },
+          L: { qty: 3, price: "₹449" },
+          XL: { qty: 2, price: "₹449" },
         },
       },
       {
         id: 2,
         color: "White",
-        images: [sweatwhite],
+        images: [whites, whites1, whites2, whites3, whites4],
         stock: {
-          S: { qty: 4, price: "₹459" },
-          M: { qty: 3, price: "₹459" },
-          L: { qty: 3, price: "₹459" },
-          XL: { qty: 2, price: "₹499" },
-          XXL: { qty: 1, price: "₹499" },
+          S: { qty: 4, price: "₹449" },
+          M: { qty: 3, price: "₹449" },
+          L: { qty: 3, price: "₹449" },
+          XL: { qty: 2, price: "₹449" },
         },
       },
       {
         id: 3,
-        color: "Lite Blue",
-        images: [sweatliteblue],
+        color: "Light Blue",
+        images: [blues, blues1, blues2],
         stock: {
-          S: { qty: 2, price: "₹459" },
-          M: { qty: 2, price: "₹459" },
-          L: { qty: 2, price: "₹459" },
-          XL: { qty: 1, price: "₹499" },
-          XXL: { qty: 1, price: "₹499" },
+          S: { qty: 4, price: "₹449" },
+          M: { qty: 3, price: "₹449" },
+          L: { qty: 3, price: "₹449" },
+          XL: { qty: 2, price: "₹449" },
         },
       },
       {
         id: 4,
-        color: "Bottle Green",
-        images: [sweatbottelgreen],
+        color: "Dark Green",
+        images: [green, green1, green2, green3, green4],
         stock: {
-          S: { qty: 1, price: "₹459" },
-          M: { qty: 2, price: "₹459" },
-          L: { qty: 2, price: "₹459" },
-          XL: { qty: 1, price: "₹499" },
-          XXL: { qty: 1, price: "₹499" },
+          S: { qty: 4, price: "₹449" },
+          M: { qty: 3, price: "₹449" },
+          L: { qty: 3, price: "₹449" },
+          XL: { qty: 2, price: "₹449" },
+        },
+      },
+      {
+        id: 5,
+        color: "Lavender",
+        images: [lavenders, lavenders1, lavenders2, lavenders3],
+        stock: {
+          S: { qty: 4, price: "₹449" },
+          M: { qty: 3, price: "₹449" },
+          L: { qty: 3, price: "₹449" },
+          XL: { qty: 2, price: "₹449" },
         },
       },
     ],
@@ -180,98 +219,74 @@ const categoryData = {
     ],
   },
 
-"regular-tshirts": {
-  name: "Regular Shirts",
-  description: "180 Gsm Regular Half Sleeve (Single Jersey Cotton)",
+"Polo-Shirts": {
+  name: "Polo Shirts",
+  description: "Polo Description",
   products: [
     {
       id: 1,
       color: "Black",
-      images: [regularBlack, regularBlack1, regularBlack2],
+      images: [blackp],
       stock: {
-        S: { qty: 3, price: "₹279" },
-        M: { qty: 3, price: "₹279" },
-        L: { qty: 2, price: "₹279" },
-        XL: { qty: 1, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
+        S: { qty: 3, price: "₹359" },
+        M: { qty: 3, price: "₹359" },
+        L: { qty: 2, price: "₹359" },
+        XL: { qty: 1, price: "₹379" },
+        XXL: { qty: 1, price: "₹379" },
       },
     },
     {
       id: 2,
       color: "White",
-      images: [regularWhite, regularWhite1, regularWhite2],
+      images: [whitep],
       stock: {
-        S: { qty: 4, price: "₹279" },
-        M: { qty: 3, price: "₹279" },
-        L: { qty: 2, price: "₹279" },
-        XL: { qty: 2, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
+        S: { qty: 3, price: "₹359" },
+        M: { qty: 3, price: "₹359" },
+        L: { qty: 2, price: "₹359" },
+        XL: { qty: 1, price: "₹379" },
+        XXL: { qty: 1, price: "₹379" },
       },
     },
     {
       id: 3,
-      color: "Blue",
-      images: [regularBlue, regularBlue1, regularBlue2],
+      color: "Red",
+      images: [redp],
       stock: {
-        S: { qty: 2, price: "₹279" },
-        M: { qty: 2, price: "₹279" },
-        L: { qty: 3, price: "₹279" },
-        XL: { qty: 1, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
+        S: { qty: 3, price: "₹359" },
+        M: { qty: 3, price: "₹359" },
+        L: { qty: 2, price: "₹359" },
+        XL: { qty: 1, price: "₹379" },
+        XXL: { qty: 1, price: "₹379" },
       },
     },
     {
       id: 4,
       color: "Beige",
-      images: [regularYellow, regularYellow1, regularYellow2],
+      images: [beigep],
       stock: {
-        S: { qty: 2, price: "₹279" },
-        M: { qty: 2, price: "₹279" },
-        L: { qty: 3, price: "₹279" },
-        XL: { qty: 1, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
+        S: { qty: 3, price: "₹359" },
+        M: { qty: 3, price: "₹359" },
+        L: { qty: 2, price: "₹359" },
+        XL: { qty: 1, price: "₹379" },
+        XXL: { qty: 1, price: "₹379" },
       },
     },
     {
       id: 5,
-      color: "Rust",
-      images: [regularRed, regularRed1, regularRed2],
+      color: "Punch Pink",
+      images: [punchpinkp],
       stock: {
-        S: { qty: 2, price: "₹279" },
-        M: { qty: 2, price: "₹279" },
-        L: { qty: 3, price: "₹279" },
-        XL: { qty: 1, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
+        S: { qty: 3, price: "₹359" },
+        M: { qty: 3, price: "₹359" },
+        L: { qty: 2, price: "₹359" },
+        XL: { qty: 1, price: "₹379" },
+        XXL: { qty: 1, price: "₹379" },
       },
-    },
-    {
-      id: 6,
-      color: "Olive",
-      images: [regularDarkGray, regularDarkGray1, regularDarkGray2],
-      stock: {
-        S: { qty: 2, price: "₹279" },
-        M: { qty: 2, price: "₹279" },
-        L: { qty: 3, price: "₹279" },
-        XL: { qty: 1, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
-      },
-    },
-    {
-      id: 7,
-      color: "Ash",
-      images: [regularGray, regularGray1, regularGray2],
-      stock: {
-        S: { qty: 2, price: "₹279" },
-        M: { qty: 2, price: "₹279" },
-        L: { qty: 3, price: "₹279" },
-        XL: { qty: 1, price: "₹299" },
-        XXL: { qty: 1, price: "₹299" },
-      },
-    },
+    }
   ],
  },
 
- hoodies: {
+  hoodies: {
   name: "Hoodies",
   description: "Hoodies Description",
   products: [
@@ -325,6 +340,7 @@ const categoryData = {
     },
   ],
  },
+
 };
 
 interface CartItem {
