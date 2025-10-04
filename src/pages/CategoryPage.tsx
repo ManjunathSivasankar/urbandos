@@ -341,6 +341,97 @@ const categoryData = {
   ],
  },
 
+   "regular-tshirts": {
+    name: "Regular T-Shirts",
+    description: "Regular desc",
+    products: [
+      {
+        id: 1,
+        color: "Black",
+        images: [regularBlack, regularBlack1, regularBlack2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+      {
+        id: 2,
+        color: "White",
+        images: [regularWhite, regularWhite1, regularWhite2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+      {
+        id: 3,
+        color: "Blue",
+        images: [regularBlue, regularBlue1, regularBlue2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+      {
+        id: 4,
+        color: "Rust",
+        images: [regularRed, regularRed1, regularRed2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+      {
+        id: 5,
+        color: "Beige",
+        images: [regularYellow, regularYellow1, regularYellow2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+      {
+        id: 6,
+        color: "Olive",
+        images: [regularDarkGray, regularDarkGray1, regularDarkGray2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+     {
+        id: 7,
+        color: "Ash",
+        images: [regularGray, regularGray1, regularGray2],
+        stock: {
+          S: { qty: 5, price: "₹279" },
+          M: { qty: 5, price: "₹279" },
+          L: { qty: 2, price: "₹279" },
+          XL: { qty: 0, price: "₹299" },
+          XXL: { qty: 3, price: "₹299" },
+        },
+      },
+    ],
+  },
+
 };
 
 interface CartItem {
