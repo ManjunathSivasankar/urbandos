@@ -13,7 +13,7 @@ interface CartItem {
 interface Tee {
   id: number;
   name: string;
-  images: string[]; // multiple images
+  images: string[];
   price: string;
   stock: { [key: string]: number };
   instagramUrl?: string;
@@ -24,98 +24,93 @@ interface CustomizedTeesProps {
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
 }
 
-// ✅ Tees data
 const customizedTees: Tee[] = [
   {
     id: 1,
     name: "Custom Design 1",
-    images: [
-      "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
-      "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
-      "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
-    ],
-    price: "₹649",
+    images: ["https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg"],
+    instagramUrl: "https://www.instagram.com/p/DM74cdFIY70/?img_index=1",
+    price: "₹199",
     stock: { S: 3, M: 2, L: 1, XL: 2, XXL: 1 },
   },
   {
     id: 2,
     name: "Custom Design 2",
-    images: [
-      "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
-      "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
-      "https://i.postimg.cc/cLBGDZWQ/Whats-App-Image-2025-08-08-at-17-54-56.jpg",
-    ],
-    price: "₹699",
+    images: ["https://i.postimg.cc/JzPKBzxM/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DNi3v6osCMU/?img_index=1",
+    price: "₹149",
     stock: { S: 3, M: 2, L: 1, XL: 3, XXL: 2 },
   },
   {
     id: 3,
     name: "Custom Design 3",
-    images: [
-      "https://i.postimg.cc/pTQzKg5b/image.png",
-      "https://i.postimg.cc/pTQzKg5b/image.png",
-      "https://i.postimg.cc/pTQzKg5b/image.png",
-    ],
-    price: "₹599",
+    images: ["https://i.postimg.cc/pTQzKg5b/image.png"],
+        instagramUrl: "https://www.instagram.com/p/DNoCAGXs0am/?img_index=1",
+    price: "₹249",
     stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
   },
   {
     id: 4,
     name: "Custom Design 4",
-    images: [
-      "https://i.postimg.cc/Jh5zxmxq/image.png",
-      "https://i.postimg.cc/Jh5zxmxq/image.png",
-      "https://i.postimg.cc/Jh5zxmxq/image.png",
-    ],
-    price: "₹749",
+    images: ["https://i.postimg.cc/Jh5zxmxq/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DODGhCMkfo4/?img_index=11",
+    price: "₹139",
     stock: { S: 2, M: 2, L: 2, XL: 1, XXL: 2 },
   },
-  {
+    {
     id: 5,
     name: "Custom Design 5",
-    images: [
-      "https://i.postimg.cc/63VbTb9T/image.png",
-      "https://i.postimg.cc/63VbTb9T/image.png",
-      "https://i.postimg.cc/63VbTb9T/image.png",
-    ],
-    instagramUrl: "https://www.instagram.com/p/DOOhkCyjF3-/?img_index=1",
-    price: "₹799",
-    stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
+    images: ["https://i.postimg.cc/Hs7C2FRs/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DOCs5NMk7LR/?img_index=1",
+    price: "₹199",
+    stock: { S: 2, M: 2, L: 2, XL: 1, XXL: 2 },
   },
   {
     id: 6,
     name: "Custom Design 6",
-    images: [
-      "https://i.postimg.cc/gkb3kyjL/image.png",
-      "https://i.postimg.cc/gkb3kyjL/image.png",
-      "https://i.postimg.cc/gkb3kyjL/image.png",
-    ],
-    instagramUrl: "https://www.instagram.com/p/DOf9MGiEXa_/?img_index=1",
-    price: "₹699",
+    images: ["https://i.postimg.cc/63VbTb9T/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DOOhkCyjF3-/?img_index=1",
+    price: "₹149",
     stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
   },
   {
     id: 7,
     name: "Custom Design 7",
-    images: [
-      "https://i.postimg.cc/qMmBZ0PB/image.png",
-      "https://i.postimg.cc/qMmBZ0PB/image.png",
-      "https://i.postimg.cc/qMmBZ0PB/image.png",
-    ],
-    instagramUrl: "https://www.instagram.com/p/DOtJVzuj0HG/?img_index=1",
-    price: "₹849",
+    images: ["https://i.postimg.cc/gkb3kyjL/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DOf9MGiEXa_/?img_index=1",
+    price: "₹149",
     stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
   },
   {
     id: 8,
     name: "Custom Design 8",
-    images: [
-      "https://i.postimg.cc/fLKkzdrm/image.png",
-      "https://i.postimg.cc/fLKkzdrm/image.png",
-      "https://i.postimg.cc/fLKkzdrm/image.png",
-    ],
-    instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_4",
-    price: "₹799",
+    images: ["https://i.postimg.cc/qMmBZ0PB/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DOtJVzuj0HG/?img_index=1",
+    price: "₹199",
+    stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
+  },
+  {
+    id: 9,
+    name: "Custom Design 9",
+    images: ["https://i.postimg.cc/fLKkzdrm/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DOx29YCEQHX/?img_index=1",
+    price: "₹149",
+    stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
+  },
+    {
+    id: 10,
+    name: "Custom Design 10",
+    images: ["https://i.postimg.cc/P5QZCVtt/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DPQkrQPDBW2/",
+    price: "₹99",
+    stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
+  },
+      {
+    id: 11,
+    name: "Custom Design 11",
+    images: ["https://i.postimg.cc/7P1x8FX1/image.png"],
+    instagramUrl: "https://www.instagram.com/p/DPE-bIAk7lh/",
+    price: "₹200",
     stock: { S: 2, M: 2, L: 2, XL: 2, XXL: 2 },
   },
 ];
@@ -124,9 +119,8 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
   const [openProduct, setOpenProduct] = useState<number | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
-  const [gallery, setGallery] = useState<{ images: string[]; index: number } | null>(null);
 
-  const navigate = useNavigate();
+  const defaultInstagram = "https://www.instagram.com/yourbrandname/"; // 👈 Change this to your main page
 
   const handleSizeClick = (tee: Tee) => {
     if (!selectedSize) {
@@ -134,7 +128,7 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
       return;
     }
 
-    let addedItem: CartItem = {
+    const newItem: CartItem = {
       id: tee.id,
       name: tee.name,
       size: selectedSize,
@@ -150,12 +144,13 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
         updated[index].quantity += 1;
         return updated;
       } else {
-        return [...prev, addedItem];
+        return [...prev, newItem];
       }
     });
 
     setOpenProduct(null);
     setSelectedSize(null);
+    alert("Added to cart!");
   };
 
   const visibleTees = showAll ? customizedTees : customizedTees.slice(0, 4);
@@ -164,7 +159,9 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
     <section className="py-16 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">🎨 Customized Tees</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            🎨 Customized Tees Print Price only
+          </h2>
         </div>
 
         {/* Product Grid */}
@@ -174,21 +171,13 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
               key={tee.id}
               className="group bg-card border border-border rounded-none hover:shadow-md transition-all duration-300"
             >
-              {/* Image (click → gallery modal) */}
-              <div
-                className="aspect-square overflow-hidden bg-secondary cursor-pointer relative"
-                onClick={() => setGallery({ images: tee.images, index: 0 })}
-              >
+              {/* ✅ Single Image (no modal) */}
+              <div className="aspect-square overflow-hidden bg-secondary">
                 <img
                   src={tee.images[0]}
                   alt={tee.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                {tee.images.length > 1 && (
-                  <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                    +{tee.images.length - 1}
-                  </span>
-                )}
               </div>
 
               <div className="p-6">
@@ -197,6 +186,7 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
                   <span className="text-lg font-semibold text-foreground">{tee.price}</span>
                 </div>
 
+                {/* Expanded (size selection) */}
                 {openProduct === tee.id ? (
                   <div className="mb-4 space-y-3">
                     <p className="text-sm text-muted-foreground">Select Size:</p>
@@ -214,30 +204,17 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
                               : "bg-white text-foreground border-gray-300 hover:bg-primary hover:text-white"
                           }`}
                         >
-                          {size} {/* ✅ Only size, no stock number */}
+                          {size}
                         </button>
                       ))}
                     </div>
 
-                    {/* Add to Cart */}
                     <button
                       onClick={() => handleSizeClick(tee)}
                       className="w-full py-2 px-4 rounded-md bg-green-500 text-white font-semibold hover:bg-green-600 transition"
                     >
                       Add to Cart
                     </button>
-
-                    {/* View on Instagram */}
-                    {tee.instagramUrl && (
-                      <a
-                        href={tee.instagramUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full block text-center py-2 px-4 rounded-md bg-pink-500 text-white font-semibold hover:bg-pink-600 transition"
-                      >
-                        View on Instagram
-                      </a>
-                    )}
 
                     <button
                       onClick={() => setOpenProduct(null)}
@@ -247,12 +224,24 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
                     </button>
                   </div>
                 ) : (
-                  <button
-                    onClick={() => setOpenProduct(tee.id)}
-                    className="w-full py-2 px-4 rounded-md bg-primary text-white font-semibold hover:bg-primary/90 transition"
-                  >
-                    Order Now
-                  </button>
+                  <div className="flex flex-col gap-3">
+                    {/* ✅ Always show both buttons */}
+                    <button
+                      onClick={() => setOpenProduct(tee.id)}
+                      className="w-full py-2 px-4 rounded-md bg-primary text-white font-semibold hover:bg-primary/90 transition"
+                    >
+                      Order Now
+                    </button>
+
+                    <a
+                      href={tee.instagramUrl || defaultInstagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full block text-center py-2 px-4 rounded-md bg-pink-500 text-white font-semibold hover:bg-pink-600 transition"
+                    >
+                      View on Instagram
+                    </a>
+                  </div>
                 )}
               </div>
             </div>
@@ -271,55 +260,6 @@ const CustomizedTees = ({ cart, setCart }: CustomizedTeesProps) => {
           </div>
         )}
       </div>
-
-      {/* Gallery Modal */}
-      {gallery && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-          onClick={() => setGallery(null)}
-        >
-          <button
-            onClick={() => setGallery(null)}
-            className="absolute top-4 right-4 text-white text-3xl"
-          >
-            ✕
-          </button>
-          <div className="relative w-full max-w-lg px-4" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={gallery.images[gallery.index]}
-              alt="Gallery"
-              className="w-full max-h-[80vh] object-contain rounded-lg"
-            />
-            {/* Prev */}
-            <button
-              onClick={() =>
-                setGallery((prev) =>
-                  prev
-                    ? {
-                        ...prev,
-                        index: (prev.index - 1 + prev.images.length) % prev.images.length,
-                      }
-                    : prev
-                )
-              }
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-1 rounded"
-            >
-              ‹
-            </button>
-            {/* Next */}
-            <button
-              onClick={() =>
-                setGallery((prev) =>
-                  prev ? { ...prev, index: (prev.index + 1) % prev.images.length } : prev
-                )
-              }
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-1 rounded"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
