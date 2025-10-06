@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from '@/components/Hero';
-import ComboOffers from '@/components/ComboOffers';
+/*import ComboOffers from '@/components/ComboOffers';*/
 import Categories from '@/components/Categories';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
@@ -18,7 +18,7 @@ const Index = ({ cart, setCart, setShowCart }: IndexProps) => {
     <div className="min-h-screen">
       {/* ❌ Removed Navbar here, because it's already in App.tsx */}
       <Hero />
-      <ComboOffers />
+      {/* <ComboOffers />*/}
       <Categories />
       <CustomizedTees cart={cart} setCart={setCart} setShowCart={setShowCart} /> {/* ✅ Pass props */}
       <Contact />
