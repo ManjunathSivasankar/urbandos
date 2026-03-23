@@ -29,7 +29,7 @@ A clean, fast, and responsive e-commerce template built with **React**, **TypeSc
 
 | Home Page | Category View | Cart Experience |
 |-----------|---------------|-----------------|
-| ![Home Placeholder](https://via.placeholder.com/400x250?text=Home+Page) | ![Category Placeholder](https://via.placeholder.com/400x250?text=Category+Page) | ![Cart Placeholder](https://via.placeholder.com/400x250?text=Cart+Drawer) |
+| ![Home Placeholder](https://i.postimg.cc/0jk62SfH/image.png) | ![Category Placeholder](https://i.postimg.cc/7ZG56w3T/image.png) 
 
 ---
 
@@ -102,7 +102,7 @@ src/
 
 ## 🌐 Live Demo
 
-[Add your deployed link here]
+https://ecom-ud.netlify.app/
 
 ---
 
