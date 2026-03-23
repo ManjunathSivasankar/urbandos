@@ -27,8 +27,8 @@ A clean, fast, and responsive e-commerce template built with **React**, **TypeSc
 
 ## 📸 Screenshots
 
-| Home Page | Category View | Cart Experience |
-|-----------|---------------|-----------------|
+| Home Page | Category View |
+|-----------|---------------|
 | ![Home Placeholder](https://i.postimg.cc/0jk62SfH/image.png) | ![Category Placeholder](https://i.postimg.cc/7ZG56w3T/image.png) 
 
 ---
