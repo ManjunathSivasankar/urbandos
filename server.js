@@ -1,4 +1,5 @@
 // server.js
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const twilio = require("twilio");
@@ -6,8 +7,8 @@ const twilio = require("twilio");
 const app = express();
 app.use(bodyParser.json());
 
-const accountSid = "TWILIO_ACCOUNT_SID";
-const authToken = "TWILIO_AUTH_TOKEN";
+const accountSid = process.env.TWILIO_ACCOUNT_SID || "YOUR_TWILIO_ACCOUNT_SID";
+const authToken = process.env.TWILIO_AUTH_TOKEN || "YOUR_TWILIO_AUTH_TOKEN";
 const client = twilio(accountSid, authToken);
 
 app.post("/order", async (req, res) => {
@@ -15,8 +16,8 @@ app.post("/order", async (req, res) => {
 
   try {
     await client.messages.create({
-      from: "whatsapp:+14155238886", // Twilio WhatsApp sandbox number
-      to: "whatsapp:+919003789388", // Owner's WhatsApp number
+      from: process.env.TWILIO_WHATSAPP_FROM || "whatsapp:+14155238886", // Twilio WhatsApp sandbox number
+      to: process.env.OWNER_WHATSAPP_NUMBER || "whatsapp:+YOUR_NUMBER", // Owner's WhatsApp number
       body: `New order received! Order ID: ${orderId}, Total: ₹${total}`,
     });
 

@@ -41,7 +41,7 @@ const CartPage = ({ cart, setCart, setShowCart }: CartPageProps) => {
       return;
     }
 
-    const phone = "919003789388"; // ✅ your WhatsApp number
+    const phone = import.meta.env.VITE_WHATSAPP_NUMBER || "YOUR_WHATSAPP_NUMBER"; // ✅ your WhatsApp number
 
     const orderDetails = cart
       .map(

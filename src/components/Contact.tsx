@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { MessageCircle, Clock, Instagram, Youtube } from "lucide-react";
+import { MessageCircle, Clock, Youtube, Camera } from "lucide-react";
 
 const Contact = () => {
   const [activeTab, setActiveTab] = useState<"instagram" | "youtube">("instagram");
 
   const openWhatsApp = () => {
+    const phone = import.meta.env.VITE_WHATSAPP_NUMBER || "YOUR_WHATSAPP_NUMBER";
     window.open(
-      "https://wa.me/1234567890?text=Hi, I have a question about UrbanDos clothing!",
+      `https://wa.me/${phone}?text=Hi, I have a question about UrbanDos clothing!`,
       "_blank"
     );
   };
@@ -35,7 +36,7 @@ const Contact = () => {
     {
       title: "Instagram",
       description: "Follow for latest drops",
-      icon: <Instagram size={24} className="text-white" />,
+      icon: <Camera size={24} className="text-white" />,
       action: openInstagram,
       btnText: "Follow Us",
       color: "bg-pink-500",

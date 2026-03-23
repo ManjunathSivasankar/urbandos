@@ -1,59 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import oversized from '@/assets/oversizedfront.png';
 import sweatshirt from '@/assets/sweatshirtfront.png';
-import comingsoon from '@/assets/comingsoon.png';
 import dropfront from '@/assets/drop.png';
-import regular from '@/assets/regular.jpg'
-import hoodie from '@/assets/hoodiecover.webp';
-import polo from '@/assets/polo.jpg';
-import sweat from '@/assets/sweat.webp';
-
 
 const categories = [
-  {
-      id: 'regular-tshirts',
-    name: 'Regular T-Shirts',
-    description: 'Classic fit. Timeless design.',
-    image: regular
-  },
-  {
-    id: 'oversized-tshirts',
-    name: 'Oversized T-Shirts',
-    description: 'Relaxed fit. Bold statement.',
-    image: comingsoon 
-  },
-    {
-    id: 'Polo-Shirts',
-    name: 'Polo T-shirts',
-    description: 'Relaxed fit. Bold statement.',
-    image: polo
-  },
   {
     id: 'sweatshirts',
     name: 'Sweatshirts',
     description: 'Comfort meets style.',
-    image: sweat
+    image: sweatshirt
   },
   {
-    id: 'hoodies',
-    name: 'Hoodies',
-    description: 'Urban essential.',
-    image: hoodie
-  },
-    {
-    id: 'acid-wash',
-    name: 'Acid-Wash-Tees',
-    description: 'Urban essential.',
-    image: comingsoon
-  }
-  /*{
-    id: 'Dropshoulder',
+    id: 'dropshoulder',
     name: 'Drop-Shoulder',
-    description: 'Comfort meets style.',
+    description: 'Relaxed fit. Bold statement.',
     image: dropfront
-  },*/
-  
-
+  },
 ];
 
 const Categories = () => {

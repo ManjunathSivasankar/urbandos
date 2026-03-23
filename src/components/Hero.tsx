@@ -1,5 +1,5 @@
-import { ChevronDown, Instagram } from 'lucide-react';
-import hero from '@/assets/hero.jpg';
+import { ChevronDown } from 'lucide-react';
+import hero from '@/assets/sweatshirtfront.png';
 
 const Hero = () => {
   const scrollToCategories = () => {
@@ -49,7 +49,6 @@ const Hero = () => {
             onClick={openInstagram}
             className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-500 ease-in-out hover:bg-pink-700"
           >
-            <Instagram size={18} />
             Follow on Instagram
           </button>
         </div>
